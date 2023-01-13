@@ -1,0 +1,67 @@
+{
+  "currentLang": "EN",
+  "EN": {
+    "General": {
+      "status": "Status",
+      "speedo": "Speedometer",
+      "settings": "Settings",
+      "reset": "Reset",
+      "save": "Save",
+      "info": "Click any colorpicker icon if you want change colors!",
+      "currentedit": "Current edit:"
+    },
+    "Status": {
+      "healthbar": "Health bar",
+      "armorbar": "Armor bar",
+      "drinkbar": "Drink bar",
+      "foodbar": "Food bar",
+      "oxygenbar": "Oxygen bar",
+      "staminabar": "Stamina bar",
+      "circlewidth": "Status circle width"
+    },
+    "Speedo": {
+      "segment-color": "segment color",
+      "segment-progress-color": "segment progress color",
+      "number-color": "number color",
+      "danger-color": "danger color",
+      "danger-progress-color": "danger progress color",
+      "number-danger-color": "number danger color",
+      "speedo-progress-color": "speedo progress color",
+      "damage-progress-color": "damage progress color",
+      "engine-icon-color": "engine icon color",
+      "tempomat-icon-color": "tempomat icon color",
+      "light-icon-color": "light icon color",
+      "door-icon-color": "door icon color",
+      "fuel-icon-color": "fuel icon color",
+      "fuel-level-color": "fuel level color",
+      "mileage-level-color": "mileage level color",
+      "unit-color": "unit color",
+      "current-speed-color": "current speed color",
+      "left-right-index-color": "left right index color",
+      "damage-icon-color": "damage icon color",
+      "speedo-background-color": "speedo background color",
+      "speedo-outer-circle-color": "speedo outer circle color",
+      "speedo-nooble-color": "speedo nooble color",
+      "speedo-nooble-container": "speedo nooble container"
+    },
+    "Settings": {
+      "status": "Status HUD ON/OFF",
+      "vehicle": "Vehicle HUD ON/OFF",
+      "weapon": "Weapon HUD ON/OFF",
+      "position": "Position HUD ON/OFF",
+      "voice": "Voice HUD ON/OFF",
+      "money": "Money HUD ON/OFF",
+      "info": "Info HUD ON/OFF",
+      "indicatorsound": "Indicator sound ON/OFF",
+      "minimaponfoot": "Minimap on foot ON/OFF",
+      "cruisecontrol": "Cruise control ON/OFF",
+      "vehiclehandlers":"Vehicle handlers(Engine toggle, Indicator lights) ON/OFF",
+      "needle": "Needle ON/OFF",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Change unit:",
+      "statuspercent": "Status percent ON/OFF",
+      "centerstatuses": "Center statuses ON/OFF"
+    }
+  }
+}
