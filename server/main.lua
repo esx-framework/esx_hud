@@ -1,5 +1,5 @@
 HUD = {
-    VersionCheckURL = 'https://raw.githubusercontent.com/Gellipapa/test_version/main/version.txt',
+    VersionCheckURL = 'https://api.github.com/repos/esx-framework/esx-advanced-hud/releases/latest',
     OnlinePlayers = 0,
     ErrorHandle = function(self, msg)
         print(('[^1ERROR^7] ^3esx_hud^7: %s'):format(msg))
@@ -33,9 +33,7 @@ VERSION = {
             return
         end
         if response then
-            --TODO: Át kell  majd írni csak teszt volt!
-            local latestVersion = "0.1.1"
-            latestVersion = latestVersion:match('%d%.%d+%.%d+')
+            latestVersion = response.tag_name:match('%d%.%d+%.%d+')
             currentVersion = currentVersion:match('%d%.%d+%.%d+')
 
             if not latestVersion then return end
