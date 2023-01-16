@@ -82,7 +82,7 @@ function HUD.FastThick(self)
             local values = {
                 playerId = self.Data.ServerId,
                 onlinePlayers = self.Data.onlinePlayers,
-                serverLogo = Config.ServerLogoSrc or 'https://esx.s3.fr-par.scw.cloud/blanc-800x800.png',
+                serverLogo = Config.ServerLogo or 'https://esx.s3.fr-par.scw.cloud/blanc-800x800.png',
                 moneys = { bank = self.Data.Money.bank or 0, money = self.Data.Money.cash or 0 },
                 weaponData = {
                     use =  self.Data.Weapon.Active,
