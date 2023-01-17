@@ -9,7 +9,7 @@ RegisterCommand('togglehud', function()
     isHidden = not isHidden
 end, false)
 
-RegisterCommand('settings', function ()
+RegisterCommand('hudsettings', function ()
     SendNUIMessage({ type = 'OPEN_SETTINGS'})
     SetNuiFocus(true, true)
 end, false)

@@ -12,6 +12,7 @@ import {SettingsPanel} from "./assets/Components/SettingsPanel/SettingsPanel";
 import {useHudStorageDispatch, useHudStorageState} from "./assets/Contexts/HudStorage";
 import {useSettingsStorageDispatch, useSettingsStorageState} from "./assets/Contexts/SettingsStorage";
 import {createStore} from "solid-js/store";
+import {setLang} from "./Utils/Translate";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
     const settingsStorageState = useSettingsStorageState();
     const settings = () => settingsStorageState.settings
     const showPanel = () => settingsStorageState.showPanel
-
+    //check update lang after render component
+    const [updateLang,setUpdateLang] = createSignal(false)
     const open = () =>{
         document.body.style.display = "flex";
     }
@@ -41,6 +43,8 @@ function App() {
                     value ? open() : close()
                     break;
                 case "SET_CONFIG_DATA":
+                    setLang(value["Lang"])
+                    setUpdateLang(true)
                     setDefaultConfigs(value)
                     const speedoColors = handleLocalStorage("speedoColors","get")
                     if(!speedoColors){
@@ -68,7 +72,9 @@ function App() {
 
   return (
     <div class={styles.App}>
-        <SettingsPanel/>
+        <Show keyed when={updateLang()}>
+            <SettingsPanel/>
+        </Show>
         <Show keyed when={!settings().Status}>
             <CircleProgressContainer/>
         </Show>

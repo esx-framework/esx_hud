@@ -49,7 +49,7 @@ const hudDefaultData = {
     serverLogo: "https://esx.s3.fr-par.scw.cloud/blanc-800x800.png",
     moneys: {bank: 75000, money: 100000},
     weaponData: { use: true ,image: "pistol", name: "WEAPON NAME" , currentAmmo: 32, maxAmmo: 128 , isWeaponMelee: false},
-    streetName: "Gellipapa",
+    streetName: "",
     mic: false,
 }
 const progressLevels = {

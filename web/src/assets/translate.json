@@ -1,5 +1,4 @@
 {
-  "currentLang": "EN",
   "EN": {
     "General": {
       "status": "Status",
@@ -62,6 +61,70 @@
       "changeunit":"Change unit:",
       "statuspercent": "Status percent ON/OFF",
       "centerstatuses": "Center statuses ON/OFF"
+    }
+  },
+  "HU": {
+    "General": {
+      "status": "Státusz",
+      "speedo": "Sebességmérő",
+      "settings": "Beállítások",
+      "reset": "Alapértelmezett",
+      "save": "Mentés",
+      "info": "Nyomj a színtáblára a színek változtatásához!",
+      "currentedit": "Jelenlegi módosítás:"
+    },
+    "Status": {
+      "healthbar": "Élet státusz",
+      "armorbar": "Pajzs státusz",
+      "drinkbar": "Ital státusz",
+      "foodbar": "Étel státusz",
+      "oxygenbar": "Oxigén státusz",
+      "staminabar": "Stamina státusz",
+      "circlewidth": "Státusz kör vastagsága"
+    },
+    "Speedo": {
+      "segment-color": "Sebességmérő színe",
+      "segment-progress-color": "Aktuális sebesség színe",
+      "number-color": "Sebességmérő szám színe",
+      "danger-color": "Figyelmeztetés színe",
+      "danger-progress-color": "Figyelmeztetés státusz színe",
+      "number-danger-color": "Sebességmérő veszélyes tartomány színe",
+      "speedo-progress-color": "Fordulatszám mérő színe",
+      "damage-progress-color": "Sérülés mérő színe",
+      "engine-icon-color": "Motor ikon szín",
+      "tempomat-icon-color": "Tempomat ikon szín",
+      "light-icon-color": "Fényszóró ikon szín",
+      "door-icon-color": "Ajtó ikon szín",
+      "fuel-icon-color": "Üzemanyag ikon szín",
+      "fuel-level-color": "Üzemanyag szint szín",
+      "mileage-level-color": "Óra állás színe",
+      "unit-color": "Mértékegység szín",
+      "current-speed-color": "Jelenlegi sebesség szín",
+      "left-right-index-color": "Index szín",
+      "damage-icon-color": "Sérülés ikon szín",
+      "speedo-background-color": "Mérőlap háttér színe",
+      "speedo-outer-circle-color": "Mérőegység keret színe",
+      "speedo-nooble-color": "Sebességmérő tű szín",
+      "speedo-nooble-container": "Sebességmérő tű körlap színe"
+    },
+    "Settings": {
+      "status": "Státusz HUD BE/KI",
+      "vehicle": "Jármű HUD BE/KI",
+      "weapon": "Fegyver HUD BE/KI",
+      "position": "Pozíció HUD BE/KI",
+      "voice": "Hang HUD BE/KI",
+      "money": "Pénz HUD BE/KI",
+      "info": "Infó HUD BE/KI",
+      "indicatorsound": "Indikátor hang BE/KI",
+      "minimaponfoot": "Minimap járműn kívül BE/KI",
+      "cruisecontrol": "Tempomat BE/KI",
+      "vehiclehandlers": "Jármű opciók(Motor indítás, Indexek) BE/KI",
+      "needle": "Sebességmérő tű BE/KI",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit": "Sebesség mértékegysége:",
+      "statuspercent": "Státusz százalék BE/KI",
+      "centerstatuses": "Státusz középre mozgatás BE/KI"
     }
   }
 }

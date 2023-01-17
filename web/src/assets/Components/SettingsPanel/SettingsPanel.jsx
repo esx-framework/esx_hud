@@ -57,7 +57,7 @@ const SaveResetButtons = (props) =>{
                         {translate("reset")}
                     </div>
                 </button>
-                <div class="uppercase text-3xl w-[115px]">{title().length > 0 ? translate(title()) : ''}</div>
+                <div class="uppercase text-3xl">{title().length > 0 ? translate(title()) : ''}</div>
                 <button class="p-2 bg-green-700 rounded-md hover:scale-125 ease-out duration-300" onClick={click}>
                     <div class="flex gap-2 items-center justify-center">
                         <SaveIcon/>
@@ -147,7 +147,7 @@ export const SettingsPanel = () =>{
 
     return(
         <>
-            <div class={`relative bg-[#17191A] w-[600px] h-[630px] rounded-[25px] ease-in duration-500 z-30 ${showPanel() ? 'slideDown' : 'slideUp'}`}>
+            <div class={`relative bg-[#17191A] w-[600px] h-[650px] rounded-[25px] ease-in duration-500 z-30 ${showPanel() ? 'slideDown' : 'slideUp'}`}>
                 <MainPage currentPath={currentPath} onMenuClick={handleMenuClick}/>
                 <SaveResetButtons toggleShowPanel={toggleShowPanel} showEdit={showEdit()} currentSelectedMenu={selectedMenuName()} selectedName={currentSelectedElementName()} onSaveAndResetButtonClick={handleClickSaveAndReset}/>
                 <Routes>
