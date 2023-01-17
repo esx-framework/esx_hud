@@ -1,5 +1,5 @@
 Config = {
-    Lang = "EN",
+    Lang = GetConvar('esx:locale', 'en'):upper(),
     Colors = {
         Status = {
             healthBar = 'red',
