@@ -1,5 +1,5 @@
 Config = {
-    Lang = "HU",
+    Lang = "EN",
     Colors = {
         Status = {
             healthBar = 'red',
