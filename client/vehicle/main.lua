@@ -14,6 +14,9 @@ if not Config.Disable.Vehicle then
         HUD.Data.Plate = GetVehicleNumberPlateText(HUD.Data.Vehicle)
         HUD.Data.Driver = isDriver()
         local vehicleClass = GetVehicleClass(HUD.Data.Vehicle)
+
+        if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then return end
+
         if vehicleClass == 13 then return end
         if vehicleClass == 15 or vehicleClass == 16 then HUD.Data.VehicleType = 'AIR' else HUD.Data.VehicleType = 'LAND' end
 

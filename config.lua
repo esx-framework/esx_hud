@@ -48,7 +48,8 @@ Config = {
         MinimapOnFoot = false,
         Needle = true,
         StatusPercent = false,
-        CenterStatuses = false
+        CenterStatuses = false,
+        PassengerSpeedo = false
     },
     Default = {
         ServerLogo = 'https://esx.s3.fr-par.scw.cloud/blanc-800x800.png',
