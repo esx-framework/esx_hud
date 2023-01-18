@@ -23,7 +23,7 @@ Features
 
 ## Download & Installation
 
-- Download link soon
+- Download link https://github.com/esx-framework/esx_hud/archive/master.zip
 - Put it in the `[esx-addons]` directory
 - Open web folder in console and run these command `npm install` after `npm run build`
 - After that, the HUD will work correctly
