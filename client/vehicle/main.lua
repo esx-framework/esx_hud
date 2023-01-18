@@ -29,7 +29,7 @@ if not Config.Disable.Vehicle then
         end
 
         local oldPos = nil
-        while HUD.Data.InVehicle do
+        while HUD.Data.InVehicle and DoesEntityExist(HUD.Data.Vehicle) do
             HUD.Data.Driver = isDriver() -- Check if meantime he changed seat
 
             local currentSpeed = GetEntitySpeed(HUD.Data.Vehicle)
