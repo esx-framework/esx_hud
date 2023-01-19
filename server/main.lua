@@ -1,5 +1,5 @@
 HUD = {
-    VersionCheckURL = 'https://api.github.com/repos/esx-framework/esx-advanced-hud/releases/latest',
+    VersionCheckURL = 'https://api.github.com/repos/esx-framework/esx-hud/releases/latest',
     OnlinePlayers = 0,
     ErrorHandle = function(self, msg)
         print(('[^1ERROR^7] ^3esx_hud^7: %s'):format(msg))
@@ -33,6 +33,9 @@ VERSION = {
             return
         end
         if response then
+            response = json.decode(response)
+            if not response.tag_name then return end
+            
             latestVersion = response.tag_name:match('%d%.%d+%.%d+')
             currentVersion = currentVersion:match('%d%.%d+%.%d+')
 
