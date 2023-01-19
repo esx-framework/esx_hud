@@ -17,7 +17,7 @@ if not Config.Disable.Vehicle then
 
         if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then return end
 
-        if vehicleClass == 13 then return end
+        --if vehicleClass == 13 then return end
         if vehicleClass == 15 or vehicleClass == 16 then HUD.Data.VehicleType = 'AIR' else HUD.Data.VehicleType = 'LAND' end
 
         if HUD.Data.Driver then
