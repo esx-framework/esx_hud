@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 description 'ESX hud'
-version '1.0.0'
+version '1.0.1'
 
 shared_scripts {
 	'@es_extended/imports.lua',
