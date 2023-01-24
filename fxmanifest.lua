@@ -14,19 +14,13 @@ shared_scripts {
 
 server_scripts {
 	'@oxmysql/lib/MySQL.lua',
-	'server/main.lua',
-	'server/mileage.lua'
+	'server/main.lua'
 }
 
 client_scripts {
 	'client/main.lua',
-	'client/voice.lua',
 	'client/player/main.lua',
-	'client/player/status.lua',
-	'client/vehicle/main.lua',
-	'client/vehicle/cruisecontrol.lua',
-	'client/vehicle/fuel.lua',
-	'client/commands.lua'
+	'client/vehicle/main.lua'
 }
 
 ui_page 'web/dist/index.html'
