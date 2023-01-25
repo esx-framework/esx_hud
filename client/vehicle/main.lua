@@ -1,137 +1,178 @@
+local cruiseControlStatus = false
+
+local function SetCruiseControlState(state)
+    cruiseControlStatus = state
+end
+
+exports("CruiseControlState", SetCruiseControlState(...))
+
 if not Config.Disable.Vehicle then
-    local cruiseControlStatus = false
+    local inVehicle, vehicleType, playerPos = false, nil, nil
     local currentMileage = 0
 
-    local function isDriver()
-        if GetPedInVehicleSeat(HUD.Data.Vehicle, -1) == HUD.Data.Ped then
+    HUD.Data.Driver = false
+
+    local values = {
+        show = false,
+        defaultIndicators = {}
+    }
+
+    local function driverCheck(currentVehicle)
+        if not DoesEntityExist(currentVehicle) then return false end
+        if GetPedInVehicleSeat(currentVehicle, -1) == PlayerPedId() then
             return true
         end
         return false
     end
 
-    AddEventHandler('esx_hud:EnteredVehicle', function ()
-        HUD.Data.Vehicle = GetVehiclePedIsIn(HUD.Data.Ped, false)
-        HUD.Data.Plate = GetVehicleNumberPlateText(HUD.Data.Vehicle)
-        HUD.Data.Driver = isDriver()
-        local vehicleClass = GetVehicleClass(HUD.Data.Vehicle)
+    local function driverCheckThread(currentVehicle)
+        CreateThread(function()
+            while inVehicle do
+                HUD.Data.Driver = driverCheck(currentVehicle)
+                playerPos = GetEntityCoords(PlayerPedId()).xy
 
-        if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then return end
+                if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then
+                    SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
+                end
+                Wait(1000)
+            end
+        end)
+    end
 
+    local function slowInfoThread(currentVehicle)
+        CreateThread(function()
+            local oldPos = nil
+
+            while inVehicle do
+                local engineHealth = math.floor(GetVehicleEngineHealth(currentVehicle) / 10)
+                local _, lowBeam, highBeam = GetVehicleLightsState(currentVehicle)
+                local lightState = false
+                local indicator = GetVehicleIndicatorLights(currentVehicle)
+                local indicatorLeft, indicatorRight = false, false
+                local doorLockStatus = false
+                local tempDoorLockStatus = GetVehicleDoorLockStatus(currentVehicle)
+
+                -- Make sure engine health not going to minus
+                if engineHealth < 0 then engineHealth = 0 end
+
+                -- Set light state
+                if lowBeam == 1 or highBeam == 1 then lightState = true end
+
+                -- Set indicator state
+                if indicator == 1 or indicator == 3 then indicatorLeft = true end
+                if indicator == 2 or indicator == 3 then indicatorRight = true end
+
+                -- Set lock state
+                if tempDoorLockStatus == 2 or tempDoorLockStatus == 3 then doorLockStatus = true end
+
+                if IsVehicleOnAllWheels(currentVehicle) then
+                    if oldPos then
+                        local distance = #(oldPos - playerPos)
+                        if distance >= 10 then
+                            currentMileage += Config.Default.Kmh and distance / 1000 or distance / 1620
+                            currentMileage = ESX.Math.Round(currentMileage, 2)
+                            oldPos = playerPos
+                        end
+                    else
+                        oldPos = playerPos
+                    end
+                end
+
+                values.fuel = { level = HUD:FuelExport() or 100, maxLevel = 100 }
+                values.mileage = currentMileage
+                values.kmh = Config.Default.Kmh
+                values.damage = engineHealth
+                values.vehType = vehicleType
+                values.driver = HUD.Data.Driver
+                values.defaultIndicators.tempomat = cruiseControlStatus
+                values.defaultIndicators.door = doorLockStatus
+                values.defaultIndicators.light = lightState
+                values.defaultIndicators.leftIndex = indicatorLeft
+                values.defaultIndicators.rightIndex = indicatorRight
+
+                Wait(200)
+            end
+        end)
+    end
+
+    local function fastInfoThread(currentVehicle)
+        CreateThread(function()
+            while inVehicle do
+                local currentSpeed = GetEntitySpeed(currentVehicle)
+                local engineRunning = GetIsVehicleEngineRunning(currentVehicle)
+                local rpm
+
+                if vehicleType == 'LAND' then
+                    rpm = engineRunning and (GetVehicleCurrentRpm(currentVehicle) * 450) or 0
+                else
+                    rpm = math.ceil(ESX.PlayerData.coords.z)
+                end
+
+                values.speed = Config.Default.Kmh and math.floor(currentSpeed * 3.6) or math.floor(currentSpeed * 2.236936)
+                values.rpm = rpm
+                values.defaultIndicators.engine = engineRunning
+
+                SendNUIMessage({ type = 'VEH_HUD', value = values })
+                Wait(50)
+            end
+        end)
+    end
+
+    local function activateVehicleHud(currentVehicle)
+        values.show = true
+        slowInfoThread(currentVehicle)
+        fastInfoThread(currentVehicle)
+    end
+
+    AddEventHandler('esx:enteredVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
+        local vehicleClass = GetVehicleClass(currentVehicle)
         if vehicleClass == 13 then return end
-        if vehicleClass == 15 or vehicleClass == 16 then HUD.Data.VehicleType = 'AIR' else HUD.Data.VehicleType = 'LAND' end
 
-        if HUD.Data.Driver then
-            TriggerServerEvent('esx_hud:EnteredVehicle', HUD.Data.Plate, Config.Default.Kmh)
-        end
+        inVehicle = true
+        HUD.Data.Driver = currentSeat == -1 or false
+        HUD.Data.Vehicle = currentVehicle
+        vehicleType = vehicleClass == 15 or vehicleClass == 16 and 'AIR' or 'LAND'
+
+        -- We have to check if he changed seat meantime
+        driverCheckThread(currentVehicle)
 
         if Config.Disable.MinimapOnFoot then
             DisplayRadar(true)
         end
 
-        local oldPos = nil
-        while HUD.Data.InVehicle and DoesEntityExist(HUD.Data.Vehicle) do
-            HUD.Data.Driver = isDriver() -- Check if meantime he changed seat
+        activateVehicleHud(currentVehicle)
 
-            local currentSpeed = GetEntitySpeed(HUD.Data.Vehicle)
-            local engineHealth = math.floor(GetVehicleEngineHealth(HUD.Data.Vehicle) / 10)
-            local engineRunning = GetIsVehicleEngineRunning(HUD.Data.Vehicle)
-            local _, lowBeam, highBeam = GetVehicleLightsState(HUD.Data.Vehicle)
-            local lightState = false
-            local indicator = GetVehicleIndicatorLights(HUD.Data.Vehicle)
-            local indicatorLeft, indicatorRight = false, false
-            local doorLockStatus = false
-            local tempDoorLockStatus = GetVehicleDoorLockStatus(HUD.Data.Vehicle)
-            local rpm = engineRunning and (GetVehicleCurrentRpm(HUD.Data.Vehicle) * 450) or 0
-            
-            if HUD.Data.VehicleType == 'AIR' then
-                rpm = math.ceil(HUD.Data.Position.z * 0.5)
-            end
-
-            if HUD.Data.VehicleType == 'AIR' then
-                rpm = math.ceil(HUD.Data.Position.z)
-            end
-
-            if engineHealth < 0 then engineHealth = 0 end
-
-            if lowBeam == 1 or highBeam == 1 then
-                lightState = true
-            end
-
-            if indicator == 1 or indicator == 3 then
-                indicatorLeft = true
-            end
-
-            if indicator == 2 or indicator == 3 then
-                indicatorRight = true
-            end
-
-            if tempDoorLockStatus == 2 or tempDoorLockStatus == 3 then
-                doorLockStatus = true
-            end
-
-            if IsVehicleOnAllWheels(HUD.Data.Vehicle) then
-                if oldPos then
-                    local distance = #(oldPos.xy - HUD.Data.Position.xy)
-                    if distance >= 10 then
-                        currentMileage += Config.Default.Kmh and distance/1000 or distance/1620
-                        currentMileage = ESX.Math.Round(currentMileage, 2)
-                        oldPos = HUD.Data.Position
-                    end
-                else
-                    oldPos = HUD.Data.Position
-                end
-            end
-
-            local values = {
-                show = true,
-                fuel = { level = HUD:FuelExport() or 100, maxLevel = 100 },
-                mileage = currentMileage,
-                kmh = Config.Default.Kmh,
-                speed = Config.Default.Kmh and math.floor(currentSpeed * 3.6) or math.floor(currentSpeed * 2.236936),
-                rpm = rpm,
-                damage = engineHealth,
-                vehType = HUD.Data.VehicleType,
-                driver = HUD.Data.Driver,
-                defaultIndicators = {
-                    tempomat = cruiseControlStatus,
-                    door = doorLockStatus,
-                    light = lightState,
-                    engine = engineRunning,
-                    leftIndex = indicatorLeft,
-                    rightIndex = indicatorRight,
-                }
-            }
-
-            SendNUIMessage({ type = 'VEH_HUD', value = values })
-            Wait(100)
+        if HUD.Data.Driver then
+            TriggerServerEvent('esx_hud:EnteredVehicle', currentPlate, Config.Default.Kmh)
         end
+    end)
+
+    AddEventHandler('esx:exitedVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
+        inVehicle = false
+        HUD.Data.Driver = false
+        HUD.Data.Vehicle = nil
+        vehicleType = nil
+        values = {
+            show = false,
+            defaultIndicators = {}
+        }
+        SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
 
         if Config.Disable.MinimapOnFoot then
             DisplayRadar(false)
         end
 
-        if HUD.Data.Driver then
-            TriggerServerEvent('esx_hud:ExitedVehicle', HUD.Data.Plate, currentMileage, Config.Default.Kmh)
+        if currentSeat == -1 then
+            TriggerServerEvent('esx_hud:ExitedVehicle', currentPlate, currentMileage, Config.Default.Kmh)
         end
-
-        HUD.Data.Vehicle = nil
-        HUD.Data.VehicleType = nil
-        HUD.Data.Plate = nil
-        HUD.Data.Driver = nil
         currentMileage = 0
-        ENTEREDVEHICLETRIGGERED = false
-        SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
     end)
 
-    RegisterNetEvent('esx_hud:CruiseControlStatus', function(state)
-        cruiseControlStatus = state
-    end)
-
-    RegisterNetEvent('esx_hud:CurrentMileage', function(mileage)
+    RegisterNetEvent('esx_hud:UpdateMileage', function(mileage)
         currentMileage = mileage
     end)
 
-    RegisterNetEvent('esx_hud:UnitChanged', function(state)
+    AddEventHandler('esx_hud:UnitChanged', function(state)
         if state then
             currentMileage = currentMileage * 1.61
         else

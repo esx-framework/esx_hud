@@ -1,31 +1,31 @@
-HUD = {
-    VersionCheckURL = 'https://api.github.com/repos/esx-framework/esx-advanced-hud/releases/latest',
-    OnlinePlayers = 0,
-    ErrorHandle = function(self, msg)
-        print(('[^1ERROR^7] ^3esx_hud^7: %s'):format(msg))
-    end,
-    InfoHandle = function(self, msg, color)
-        if color == "green" then
-            color = 2
-        elseif color == "red" then
-            color = 1
-        elseif color == "blue" then
-            color = 4
-        else
-            color = 3
-        end
-        print(('[^9INFO^7] ^3esx_hud^7: ^'..color..'%s^7'):format(msg))
-    end,
-    UpdateOnlinePlayers = function (self)
-        if Config.Disable.Info then return end
-        TriggerClientEvent('esx_hud:ChangePlayerCount', -1, HUD.OnlinePlayers)
-    end,
-}
+HUD.VersionCheckURL = 'https://api.github.com/repos/esx-framework/esx-hud/releases/latest'
+
+function HUD:ErrorHandle(msg)
+    print(('[^1ERROR^7] ^3esx_hud^7: %s'):format(msg))
+end
+
+function HUD:InfoHandle(msg, color)
+    if color == "green" then
+        color = 2
+    elseif color == "red" then
+        color = 1
+    elseif color == "blue" then
+        color = 4
+    else
+        color = 3
+    end
+    print(('[^9INFO^7] ^3esx_hud^7: ^'..color..'%s^7'):format(msg))
+end
+
+function HUD:UpdatePlayerCount()
+    TriggerClientEvent('esx_hud:UpdatePlayerCount', -1, HUD.Data.OnlinePlayers)
+end
 
 VERSION = {
     Check = function(err, response, headers)
         --Credit: OX_lib version checker by Linden
         local currentVersion = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
+        local latestVersion
         if not currentVersion then return end
 
         if err ~= 200 then
@@ -33,6 +33,9 @@ VERSION = {
             return
         end
         if response then
+            response = json.decode(response)
+            if not response.tag_name then return end
+            
             latestVersion = response.tag_name:match('%d%.%d+%.%d+')
             currentVersion = currentVersion:match('%d%.%d+%.%d+')
 
@@ -75,16 +78,16 @@ RegisterNetEvent('esx_hud:ErrorHandle', function(msg)
 end)
 
 AddEventHandler('playerJoining', function(playerId, reason)
-    HUD.OnlinePlayers += 1
-    HUD.UpdateOnlinePlayers()
+    HUD.Data.OnlinePlayers += 1
+    HUD:UpdatePlayerCount()
 end)
 
 AddEventHandler('playerDropped', function()
-    HUD.OnlinePlayers += -1
-    if HUD.OnlinePlayers < 0 then
-        HUD.OnlinePlayers = 0
+    HUD.Data.OnlinePlayers += -1
+    if HUD.Data.OnlinePlayers < 0 then
+        HUD.Data.OnlinePlayers = 0
     end
-    HUD.UpdateOnlinePlayers()
+    HUD:UpdatePlayerCount()
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
@@ -93,8 +96,8 @@ AddEventHandler('onResourceStart', function(resourceName)
     local built = LoadResourceFile(currentName, './web/dist/index.html')
 
     Wait(100)
-    HUD.OnlinePlayers = #GetPlayers()
-    HUD:UpdateOnlinePlayers()
+    HUD.Data.OnlinePlayers = #GetPlayers()
+    HUD:UpdatePlayerCount()
 
     --Run version checker
     VERSION:RunVersionChecker()

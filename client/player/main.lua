@@ -1,15 +1,15 @@
-local PlayerLoaded, inPause = false, false
-local WeaponList = {}
-local bool, ammoInClip = false, 0
 
-function HUD.GetLocation(self)
-    local PPos = self.Data.Position
+local bool, ammoInClip = false, 0
+local WeaponList = {}
+
+function HUD:GetLocation()
+    local PPos = GetEntityCoords(PlayerPedId())
     local streetHash = GetStreetNameAtCoord(PPos.x, PPos.y, PPos.z)
     local streetName = GetStreetNameFromHashKey(streetHash)
     return streetName
 end
 
-function HUD.UpdateAccounts(self, accounts)
+function HUD:UpdateAccounts(accounts)
     if not Config.Disable.Money then
         if accounts == nil then return end
         for _, data in pairs(accounts) do
@@ -22,27 +22,28 @@ function HUD.UpdateAccounts(self, accounts)
     end
 end
 
-function HUD.SetPlayerId(self)
-    self.Data.PlayerId = PlayerId()
-    self.Data.ServerId = GetPlayerServerId(self.Data.PlayerId)
+function HUD:GetWeapons()
+    local tempWeaponList = ESX.GetWeaponList()
+    for i = 1, #tempWeaponList do
+        WeaponList[GetHashKey(tempWeaponList[i].name)] = {name = tempWeaponList[i].name, label = tempWeaponList[i].label, ammo = tempWeaponList[i].ammo and true or false}
+    end
 end
 
-function HUD.SlowThick(self)
+function HUD:SlowThick()
     CreateThread(function()
-        while PlayerLoaded do
-            self.Data.Ped = PlayerPedId()
-            self.Data.Position = GetEntityCoords(self.Data.Ped)
-            self.Data.InVehicle = IsPedInAnyVehicle(self.Data.Ped, false) and GetEntityHealth(self.Data.Ped) > 0
+        while not ESX.PlayerLoaded do Wait(200) end
+        while ESX.PlayerLoaded do
+            self.Data.Position = GetEntityCoords(PlayerPedId())
 
             if not Config.Disable.Position then
                 self.Data.Location = self:GetLocation()
             end
 
             if not Config.Disable.Weapon then
-                self.Data.Weapon.Active, self.Data.Weapon.CurrentWeapon = GetCurrentPedWeapon(self.Data.Ped, false)
+                self.Data.Weapon.Active, self.Data.Weapon.CurrentWeapon = GetCurrentPedWeapon(PlayerPedId(), false)
                 if self.Data.Weapon.CurrentWeapon == 0 then self.Data.Weapon.Active = false end
                 if self.Data.Weapon.Active then
-                    self.Data.Weapon.MaxAmmo = (GetAmmoInPedWeapon(self.Data.Ped, self.Data.Weapon.CurrentWeapon)-ammoInClip)
+                    self.Data.Weapon.MaxAmmo = (GetAmmoInPedWeapon(PlayerPedId(), self.Data.Weapon.CurrentWeapon)-ammoInClip)
                     self.Data.Weapon.Name = WeaponList[self.Data.Weapon.CurrentWeapon].label and WeaponList[self.Data.Weapon.CurrentWeapon].label or false
                     self.Data.Weapon.isWeaponMelee = not WeaponList[self.Data.Weapon.CurrentWeapon].ammo
                     self.Data.Weapon.Image = string.gsub(WeaponList[self.Data.Weapon.CurrentWeapon].name, "WEAPON_", "")
@@ -50,39 +51,27 @@ function HUD.SlowThick(self)
                 end
             end
 
-            if IsPauseMenuActive() and not inPause and not isHidden then
-                inPause = true
-                self:Toggle(not inPause)
-            elseif not IsPauseMenuActive() and inPause and not isHidden then
-                inPause = false
-                self:Toggle(not inPause)
-            end
-
-            if not ENTEREDVEHICLETRIGGERED and self.Data.InVehicle then
-                TriggerEvent('esx_hud:EnteredVehicle')
-                ENTEREDVEHICLETRIGGERED = true
-            end
-
             Wait(1000)
         end
     end)
 end
 
-function HUD.FastThick(self)
+function HUD:FastThick()
     CreateThread(function()
-        while PlayerLoaded do
+        while not ESX.PlayerLoaded do Wait(200) end
+        while ESX.PlayerLoaded do
             if not Config.Disable.Voice then
-                self.Data.isTalking = NetworkIsPlayerTalking(self.Data.PlayerId)
+                self.Data.isTalking = NetworkIsPlayerTalking(PlayerId())
             end
 
             if self.Data.Weapon.Active then
-                bool, ammoInClip = GetAmmoInClip(self.Data.Ped, self.Data.Weapon.CurrentWeapon)
+                bool, ammoInClip = GetAmmoInClip(PlayerPedId(), self.Data.Weapon.CurrentWeapon)
                 self.Data.Weapon.CurrentAmmo = ammoInClip
             end
             local values = {
-                playerId = self.Data.ServerId,
-                onlinePlayers = self.Data.onlinePlayers,
-                serverLogo = Config.ServerLogo or 'https://esx.s3.fr-par.scw.cloud/blanc-800x800.png',
+                playerId = GetPlayerServerId(PlayerId()),
+                onlinePlayers = self.Data.OnlinePlayers,
+                serverLogo = Config.Default.ServerLogo,
                 moneys = { bank = self.Data.Money.bank or 0, money = self.Data.Money.cash or 0 },
                 weaponData = {
                     use =  self.Data.Weapon.Active,
@@ -106,32 +95,23 @@ end
 -- On script start
 AddEventHandler('onResourceStart', function(resource)
     if GetCurrentResourceName() ~= resource then return end
-    Wait(100)
-    PlayerLoaded = true
-
-    if not Config.Disable.Weapon then
-        local tempWeaponList = ESX.GetWeaponList()
-        for i = 1, #tempWeaponList do
-            WeaponList[GetHashKey(tempWeaponList[i].name)] = {name = tempWeaponList[i].name, label = tempWeaponList[i].label, ammo = tempWeaponList[i].ammo and true or false}
-        end
-    end
+    while not ESX.PlayerLoaded do Wait(200) end
+    if not Config.Disable.Weapon then HUD:GetWeapons() end
 end)
 
 -- On player loaded
 AddEventHandler('esx:playerLoaded', function(xPlayer)
-    PlayerLoaded = true
-
-    if not Config.Disable.Weapon then
-        local tempWeaponList = ESX.GetWeaponList()
-        for i = 1, #tempWeaponList do
-            WeaponList[GetHashKey(tempWeaponList[i].name)] = {name = tempWeaponList[i].name, label = tempWeaponList[i].label, ammo = tempWeaponList[i].ammo and true or false}
-        end
-    end
+    while not ESX.PlayerLoaded do Wait(200) end
+    if not Config.Disable.Weapon then HUD:GetWeapons() end
 end)
 
--- On player dropped
-AddEventHandler('esx:onPlayerLogout', function()
-    PlayerLoaded = false
+AddEventHandler('esx:pauseMenuActive', function(state)
+    if HUD.Data.hudHidden then return end
+    HUD:Toggle(not state)
+end)
+
+RegisterNetEvent('esx_hud:UpdatePlayerCount', function(playerCount)
+    HUD.Data.OnlinePlayers = playerCount
 end)
 
 --Cash and Bank handler

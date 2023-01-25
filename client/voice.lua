@@ -12,7 +12,7 @@ if not Config.Disable.Voice then
 
         AddEventHandler('onResourceStart', function(resourceName)
             if not resourceName == 'pma-voice' then return end
-            Wait(100)
+            Wait(1000)
             SendNUIMessage({ type = 'VOICE_RANGE', value = LocalPlayer.state.proximity.index })
         end)
     elseif GetResourceState('saltychat') == 'started' then

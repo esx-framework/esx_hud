@@ -1,86 +1,63 @@
-ENTEREDVEHICLETRIGGERED = false
+PLAYERLOADED = false
+local firstSpawn = false
 
-HUD = {
-    Start = function(self, xPlayer)
-        if not xPlayer then xPlayer = ESX.GetPlayerData() end 
-        self:SetPlayerId()
-        self:SetHudColor()
-        self:SlowThick()
-        self:FastThick()
-        self:Toggle(true)
-        if not Config.Disable.Info then
-            self:UpdateAccounts(xPlayer.accounts)
-        end
-        if Config.Disable.MinimapOnFoot then
-            DisplayRadar(false)
-        end
-    end,
-    Toggle = function(self, state)
-        SendNUIMessage({ type = 'SHOW', value = state })
-    end,
-    SetHudColor = function(self)
-        SendNUIMessage({ type = 'SET_CONFIG_DATA', value = Config })
-    end,
-    Data = {
-        Weapon = {},
-        Money = {},
-        onlinePlayers = 0
-    }
-}
+function HUD:Toggle(state)
+    SendNUIMessage({ type = 'SHOW', value = state })
+end
+
+function HUD:SetHudColor()
+    SendNUIMessage({ type = 'SET_CONFIG_DATA', value = Config })
+end
+
+function HUD:Start(xPlayer)
+    if not xPlayer then xPlayer = ESX.GetPlayerData() end
+    self:Toggle(true)
+    self:SetHudColor()
+    self:SlowThick()
+    self:FastThick()
+
+    if not Config.Disable.Status then
+        self:StatusThread()
+    end
+
+    if not Config.Disable.Info then
+        self:UpdateAccounts(xPlayer.accounts)
+    end
+
+    if Config.Disable.MinimapOnFoot then
+        DisplayRadar(false)
+    end
+end
 
 -- Handlers
--- On script start
-AddEventHandler('onResourceStart', function(resource)
-    if GetCurrentResourceName() ~= resource then return end
-    Wait(100)
-    HUD:Start()
-end)
+    -- On script start
+    AddEventHandler('onResourceStart', function(resource)
+        if GetCurrentResourceName() ~= resource then return end
+        Wait(1000)
+        while not ESX.PlayerLoaded do Wait(200) end
+        PLAYERLOADED = true
+        HUD:Start()
+    end)
 
--- On player loaded
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-    HUD:Start(xPlayer)
-end)
+    if not Config.MultiChar then
+        AddEventHandler('esx:onPlayerSpawn', function(xPlayer)
+            if not firstSpawn then return end
+            while not ESX.PlayerLoaded do Wait(200) end
+            firstSpawn = true
+            PLAYERLOADED = true
+            HUD:Start()
+        end)
+    else
+        -- On player loaded
+        AddEventHandler('esx:playerLoaded', function(xPlayer)
+            PLAYERLOADED = true
+            HUD:Start(xPlayer)
+        end)
 
--- On player dropped
-AddEventHandler('esx:onPlayerLogout', function()
-    HUD:Toggle(false)
-end)
-
--- Events
-RegisterNetEvent('esx_hud:ChangePlayerCount', function(OnlinePlayers)
-    HUD.Data.onlinePlayers = OnlinePlayers
-end)
-
--- NuiCallback
-RegisterNUICallback('closePanel', function(data,cb)
-    SetNuiFocus(false, false)
-    cb('ok')
-end)
-
-RegisterNUICallback('unitChanged', function(state, cb)
-    if HUD.Data.Vehicle and HUD.Data.Driver then
-        if Config.Default.Kmh ~= state.unit then
-            TriggerEvent('esx_hud:UnitChanged', state.unit)
-        end
+        -- ForceLog or Logout
+        AddEventHandler('esx:onPlayerLogout', function()
+            PLAYERLOADED = false
+            HUD:Toggle(false)
+        end)
     end
-    Config.Default.Kmh = state.unit
-    cb('ok')
-end)
 
-RegisterNUICallback('minimapSettingChanged', function (state,cb)
-    Config.Disable.MinimapOnFoot = state.changed
-    if IsPedOnFoot(HUD.Data.Ped) ~= 1 then return cb('ok') end
-    DisplayRadar(not state.changed)
-    cb('ok')
-end)
-
-RegisterNUICallback('notify', function (data,cb)
-    local state = data.state
-    if state.reset then
-        ESX.ShowNotification(Translate('settingsResetSuccess', 5000, 'info'))
-        cb('ok')
-        return
-    end
-    ESX.ShowNotification(Translate('settingsSaveSuccess', 5000, 'info'))
-    cb('ok')
-end)
