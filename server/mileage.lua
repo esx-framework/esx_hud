@@ -77,13 +77,13 @@ if not Config.Disable.Vehicle then
         TriggerClientEvent('esx_hud:UpdateMileage', playerId, mileage)
     end
 
-    RegisterNetEvent('esx_hud:EnteredVehicle', function(plate)
+    RegisterNetEvent('esx_hud:EnteredVehicle', function(plate, kmh)
         local playerId = source
-        Mileage:Exist(plate, playerId, Config.Default.Kmh)
+        Mileage:Exist(plate, playerId, kmh)
     end)
 
-    RegisterNetEvent('esx_hud:ExitedVehicle', function(plate, mileage)
-        Mileage:Update(plate, mileage, source, Config.Default.Kmh)
+    RegisterNetEvent('esx_hud:ExitedVehicle', function(plate, mileage, kmh)
+        Mileage:Update(plate, mileage, source, kmh)
     end)
 
     -- Auto save every 5 min
@@ -100,13 +100,6 @@ if not Config.Disable.Vehicle then
         Mileage:Save()
     end)
 
-    -- Auto save on resource stop
-    -- AddEventHandler('onServerResourceStop', function(resourceName)
-    --     if GetCurrentResourceName() ~= resourceName then return end
-    --     Wait(100)
-    --     Mileage:Save()
-    -- end)
-
     -- Auto save 10 sec before scheduled restart
     AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
         if eventData.secondsRemaining == 60 then
@@ -121,9 +114,5 @@ if not Config.Disable.Vehicle then
     AddEventHandler('txAdmin:events:serverShuttingDown', function()
         Mileage:Save()
     end)
-
-    RegisterCommand('ments', function ()
-        Mileage:Save()
-    end, false)
 
 end

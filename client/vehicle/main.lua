@@ -7,8 +7,10 @@ end
 exports("CruiseControlState", SetCruiseControlState(...))
 
 if not Config.Disable.Vehicle then
-    local inVehicle, isDriver, vehicleType, playerPos = false, false, nil, nil
+    local inVehicle, vehicleType, playerPos = false, nil, nil
     local currentMileage = 0
+
+    HUD.Data.Driver = false
 
     local values = {
         show = false,
@@ -17,7 +19,7 @@ if not Config.Disable.Vehicle then
 
     local function driverCheck(currentVehicle)
         if not DoesEntityExist(currentVehicle) then return false end
-        if GetPedInVehicleSeat(currentVehicle, -1) == ESX.PlayerData.ped then
+        if GetPedInVehicleSeat(currentVehicle, -1) == PlayerPedId() then
             return true
         end
         return false
@@ -26,10 +28,10 @@ if not Config.Disable.Vehicle then
     local function driverCheckThread(currentVehicle)
         CreateThread(function()
             while inVehicle do
-                isDriver = driverCheck(currentVehicle)
-                playerPos = GetEntityCoords(ESX.PlayerData.ped).xy
+                HUD.Data.Driver = driverCheck(currentVehicle)
+                playerPos = GetEntityCoords(PlayerPedId()).xy
 
-                if Config.Disable.PassengerSpeedo and not isDriver then
+                if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then
                     SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
                 end
                 Wait(1000)
@@ -81,12 +83,12 @@ if not Config.Disable.Vehicle then
                 values.kmh = Config.Default.Kmh
                 values.damage = engineHealth
                 values.vehType = vehicleType
-                values.driver = isDriver
-                values.defaultIndicatorstempomat = cruiseControlStatus
-                values.defaultIndicatorsdoor = doorLockStatus
-                values.defaultIndicatorslight = lightState
-                values.defaultIndicatorsleftIndex = indicatorLeft
-                values.defaultIndicatorsrightIndex = indicatorRight
+                values.driver = HUD.Data.Driver
+                values.defaultIndicators.tempomat = cruiseControlStatus
+                values.defaultIndicators.door = doorLockStatus
+                values.defaultIndicators.light = lightState
+                values.defaultIndicators.leftIndex = indicatorLeft
+                values.defaultIndicators.rightIndex = indicatorRight
 
                 Wait(200)
             end
@@ -122,12 +124,13 @@ if not Config.Disable.Vehicle then
         fastInfoThread(currentVehicle)
     end
 
-    AddEventHandler('esx:EnteredVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
+    AddEventHandler('esx:enteredVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
         local vehicleClass = GetVehicleClass(currentVehicle)
         if vehicleClass == 13 then return end
 
         inVehicle = true
-        isDriver = currentSeat == -1 or false
+        HUD.Data.Driver = currentSeat == -1 or false
+        HUD.Data.Vehicle = currentVehicle
         vehicleType = vehicleClass == 15 or vehicleClass == 16 and 'AIR' or 'LAND'
 
         -- We have to check if he changed seat meantime
@@ -139,14 +142,15 @@ if not Config.Disable.Vehicle then
 
         activateVehicleHud(currentVehicle)
 
-        if isDriver then
-            TriggerServerEvent('esx_hud:EnteredVehicle', currentPlate)
+        if HUD.Data.Driver then
+            TriggerServerEvent('esx_hud:EnteredVehicle', currentPlate, Config.Default.Kmh)
         end
     end)
 
-    AddEventHandler('esx:ExitedVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
+    AddEventHandler('esx:exitedVehicle', function(currentVehicle, currentPlate, currentSeat, displayName, netId)
         inVehicle = false
-        isDriver = false
+        HUD.Data.Driver = false
+        HUD.Data.Vehicle = nil
         vehicleType = nil
         values = {
             show = false,
@@ -159,7 +163,7 @@ if not Config.Disable.Vehicle then
         end
 
         if currentSeat == -1 then
-            TriggerServerEvent('esx_hud:ExitedVehicle', currentPlate, currentMileage)
+            TriggerServerEvent('esx_hud:ExitedVehicle', currentPlate, currentMileage, Config.Default.Kmh)
         end
         currentMileage = 0
     end)
