@@ -1,8 +1,13 @@
 Config = {
     Lang = GetConvar('esx:locale', 'en'):upper(),
     Colors = {
+        Info = {
+            ['money-text-color'] = "#4d6973",
+            ['bank-text-color'] = "#32a852",
+            ['job-text-color'] = "orange",
+        },
         Status = {
-            healthBar = 'red',
+            healthBar = 'orange',
             armorBar = 'blue',
             drinkBar = 'lightblue',
             foodBar = 'yellow'
@@ -44,7 +49,6 @@ Config = {
         Info = false,
         IndicatorSound = false, --vehicle index sound
         VehicleHandlers = false, -- Engine toggle, Indicator lights
-        CruiseControl = false,
         MinimapOnFoot = false,
         Needle = true,
         StatusPercent = false,
