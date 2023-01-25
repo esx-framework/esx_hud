@@ -7,7 +7,7 @@ Config = {
             ['job-text-color'] = "orange",
         },
         Status = {
-            healthBar = 'orange',
+            healthBar = 'red',
             armorBar = 'blue',
             drinkBar = 'lightblue',
             foodBar = 'yellow'
