@@ -33,6 +33,20 @@ const initialState = {
             color: "green"
         }
     ],
+    infoColors: [
+        {
+            name: "money-text-color",
+            color: "blue"
+        },
+        {
+            name: "bank-text-color",
+            color: "orange"
+        },
+        {
+            name: "job-text-color",
+            color: "red"
+        }
+    ],
     speedoColors:[
         {
             name: "segment-color",
@@ -138,7 +152,6 @@ const initialState = {
         Info: false,
         IndicatorSound: false,
         VehicleHandlers:false,
-        CruiseControl:false,
         MinimapOnFoot:false,
         Needle: false,
         Kmh: true,
@@ -155,7 +168,6 @@ const initialState = {
         Info: false,
         IndicatorSound: false,
         VehicleHandlers:false,
-        CruiseControl:false,
         MinimapOnFoot:false,
         Needle:false,
         Kmh: true,
@@ -278,7 +290,8 @@ export default function SettingsStorage(props){
 
         Object.keys(colors).forEach((color)=>{
             r.style.setProperty(`--${color}`,colors[color])
-        })
+        }) 
+
     }
 
     /*
@@ -394,7 +407,8 @@ export default function SettingsStorage(props){
         setStore("showPanel", !store.showPanel)
     }
 
-    function setDefaultConfigs(newConfig){
+    function setDefaultConfigs(newConfig) {
+        changeThemeColors(newConfig["Colors"]["Info"])
         setSettingsByName("Kmh", newConfig["Default"].Kmh)
         setStore("defaultConfigs",newConfig["Default"])
         setStore("disableDefaultConfig",newConfig["Disable"])
