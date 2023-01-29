@@ -6,6 +6,7 @@ local WeaponList = {}
 function HUD:GetJobLabel()
     if not ESX.PlayerData.job then return end
     if ESX.PlayerData.job.name == 'unemployed' then return ESX.PlayerData.job.label end
+
     return string.format("%s - %s", ESX.PlayerData.job.label,ESX.PlayerData.job.grade_label)
 end
 
@@ -33,7 +34,7 @@ function HUD:GetWeapons()
     WeaponList = ESX.GetWeaponList(true)
 end
 
-function HUD:SlowThick()
+function HUD:SlowThick()    
     CreateThread(function()
         while not ESX.PlayerLoaded do Wait(200) end
         while ESX.PlayerLoaded do
