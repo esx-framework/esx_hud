@@ -29,10 +29,7 @@ function HUD:UpdateAccounts(accounts)
 end
 
 function HUD:GetWeapons()
-    local tempWeaponList = ESX.GetWeaponList()
-    for i = 1, #tempWeaponList do
-        WeaponList[GetHashKey(tempWeaponList[i].name)] = {name = tempWeaponList[i].name, label = tempWeaponList[i].label, ammo = tempWeaponList[i].ammo and true or false}
-    end
+    WeaponList = ESX.GetWeaponList(true)
 end
 
 function HUD:SlowThick()    
