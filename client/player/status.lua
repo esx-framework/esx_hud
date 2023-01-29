@@ -24,7 +24,6 @@ if not Config.Disable.Status then
                 stamina = math.floor(100 - GetPlayerSprintStaminaRemaining(playerId))
                 if stamina == 0 then stamina = 1 end
                 if stamina == 100 then stamina = 0 end
-    
                 values.oxygenBar = IsPedSwimmingUnderWater(PlayerPedId()) and oxygen or 0
                 values.staminaBar = stamina
                 SendNUIMessage({ type = 'STATUS_HUD', value = values })

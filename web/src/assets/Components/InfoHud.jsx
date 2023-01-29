@@ -1,4 +1,5 @@
-import {createMemo, createSignal, Show} from "solid-js";
+import './InfoHud.css';
+import { createMemo, createSignal, Show } from "solid-js";
 import {useHudStorageState} from "../Contexts/HudStorage";
 import {useSettingsStorageState} from "../Contexts/SettingsStorage";
 
@@ -76,12 +77,17 @@ const SecondRow = (props) =>{
             <div className="flex flex-col">
                 <div className="relative">
                     <ArrowIcon/>
-                    <p className="text-2xl text-green-400 font-bold">${props.money}</p>
+                    <p className="text-2xl moneyTextColor font-bold">${props.money}</p>
                 </div>
 
                 <div className="relative">
                     <ArrowIcon/>
-                    <p className="text-xl text-gray-600 font-bold">${props.bank}</p>
+                    <p className="text-xl bankTextColor font-bold">${props.bank}</p>
+                </div>
+
+                <div className="relative">
+                    <ArrowIcon/>
+                    <p className="text-xl jobTextColor font-bold">{props.jobLabel}</p>
                 </div>
             </div>
         </Show>
@@ -119,8 +125,10 @@ const ThirdRow = (props) =>{
         <Show when={disableWeapon()} keyed>
             <div className="relative top-6">
                 <div className="relative">
-                    <ArrowIcon/>
-                    <img class="w-1/2" src={currentWeaponImage()}  alt="no picture"/>
+                    <ArrowIcon />
+                    <Show when={currentWeaponImage().length > 0}>
+                        <img class="w-1/2" src={currentWeaponImage()}  alt="no picture"/>
+                    </Show>
                 </div>
                 <div className="flex gap-2 relative bg-ammo-container-background">
                     <p class="text-white">{props?.name}</p>
@@ -148,12 +156,13 @@ export const InfoHud = (props) => {
     const hud = () => hudStorageState.hud
     const moneys = () => hud().moneys
     const weapon = () => hud().weaponData
+    const job = () => hud().job
     const serverLogo = () => defaultConfigs().ServerLogo
 
     return (
         <div className="flex flex-col gap-2 w-48 absolute right-0 top-6">
             <FirstRow hide={settings().Info} playerId={hud().playerId} onlinePlayers={hud().onlinePlayers} serverLogo={serverLogo()}/>
-            <SecondRow hide={settings().Money} bank={hudStorageState.hud.moneys.bank} money={moneys().money}/>
+            <SecondRow hide={settings().Money} bank={hudStorageState.hud.moneys.bank} money={moneys().money} jobLabel={job()} />
             <ThirdRow hide={settings().Weapon} use={hud().weaponData?.use} name={weapon().name} image={weapon().image} currentAmmo={weapon().currentAmmo} isWeaponMelee={weapon().isWeaponMelee} maxAmmo={weapon().maxAmmo}/>
         </div>
     );

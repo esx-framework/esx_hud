@@ -17,7 +17,6 @@ let disableDefaultConfig = {
         Info: false,
         IndicatorSound: false,
         VehicleHandlers:false,
-        CruiseControl:false,
         MinimapOnFoot:false,
         Needle: false,
         Kmh: true,

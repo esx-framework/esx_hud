@@ -4,7 +4,9 @@ local function SetCruiseControlState(state)
     cruiseControlStatus = state
 end
 
-exports("CruiseControlState", SetCruiseControlState(...))
+exports('CruiseControlState', function(...)
+    SetCruiseControlState(...)
+end)
 
 if not Config.Disable.Vehicle then
     local inVehicle, vehicleType, playerPos = false, nil, nil

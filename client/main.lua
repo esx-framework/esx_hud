@@ -1,6 +1,3 @@
-PLAYERLOADED = false
-local firstSpawn = false
-
 function HUD:Toggle(state)
     SendNUIMessage({ type = 'SHOW', value = state })
 end
@@ -11,7 +8,6 @@ end
 
 function HUD:Start(xPlayer)
     if not xPlayer then xPlayer = ESX.GetPlayerData() end
-    self:Toggle(true)
     self:SetHudColor()
     self:SlowThick()
     self:FastThick()
@@ -27,6 +23,8 @@ function HUD:Start(xPlayer)
     if Config.Disable.MinimapOnFoot then
         DisplayRadar(false)
     end
+
+    self:Toggle(true)
 end
 
 -- Handlers
@@ -34,30 +32,17 @@ end
     AddEventHandler('onResourceStart', function(resource)
         if GetCurrentResourceName() ~= resource then return end
         Wait(1000)
-        while not ESX.PlayerLoaded do Wait(200) end
-        PLAYERLOADED = true
         HUD:Start()
     end)
 
-    if not Config.MultiChar then
-        AddEventHandler('esx:onPlayerSpawn', function(xPlayer)
-            if not firstSpawn then return end
-            while not ESX.PlayerLoaded do Wait(200) end
-            firstSpawn = true
-            PLAYERLOADED = true
-            HUD:Start()
-        end)
-    else
-        -- On player loaded
-        AddEventHandler('esx:playerLoaded', function(xPlayer)
-            PLAYERLOADED = true
-            HUD:Start(xPlayer)
-        end)
+    -- On player loaded
+    AddEventHandler('esx:playerLoaded', function(xPlayer)
+        Wait(1000)
+        HUD:Start(xPlayer)
+    end)
 
-        -- ForceLog or Logout
-        AddEventHandler('esx:onPlayerLogout', function()
-            PLAYERLOADED = false
-            HUD:Toggle(false)
-        end)
-    end
-
+    -- ForceLog or Logout
+    AddEventHandler('esx:onPlayerLogout', function()
+        Wait(1000)
+        HUD:Toggle(false)
+    end)
