@@ -125,8 +125,10 @@ const ThirdRow = (props) =>{
         <Show when={disableWeapon()} keyed>
             <div className="relative top-6">
                 <div className="relative">
-                    <ArrowIcon/>
-                    <img class="w-1/2" src={currentWeaponImage()}  alt="no picture"/>
+                    <ArrowIcon />
+                    <Show when={currentWeaponImage().length > 0}>
+                        <img class="w-1/2" src={currentWeaponImage()}  alt="no picture"/>
+                    </Show>
                 </div>
                 <div className="flex gap-2 relative bg-ammo-container-background">
                     <p class="text-white">{props?.name}</p>
