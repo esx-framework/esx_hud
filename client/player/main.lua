@@ -5,6 +5,8 @@ local WeaponList = {}
 
 function HUD:GetJobLabel()
     if not ESX.PlayerData.job then return end
+    if ESX.PlayerData.job.name == 'unemployed' then return ESX.PlayerData.job.label end
+
     return string.format("%s - %s", ESX.PlayerData.job.label,ESX.PlayerData.job.grade_label)
 end
 
@@ -100,13 +102,12 @@ end
 -- On script start
 AddEventHandler('onResourceStart', function(resource)
     if GetCurrentResourceName() ~= resource then return end
-    while not ESX.PlayerLoaded do Wait(200) end
+    Wait(1000)
     if not Config.Disable.Weapon then HUD:GetWeapons() end
 end)
 
 -- On player loaded
 AddEventHandler('esx:playerLoaded', function(xPlayer)
-    while not ESX.PlayerLoaded do Wait(200) end
     if not Config.Disable.Weapon then HUD:GetWeapons() end
     HUD:GetJobLabel(xPlayer.job)
 end)
