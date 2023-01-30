@@ -67,7 +67,8 @@ const initialState = {
         playerId: 1,
         onlinePlayers:150,
         serverLogo: "https://esx.s3.fr-par.scw.cloud/blanc-800x800.png",
-        moneys: {bank: 75000, money: 100000},
+        moneys: { bank: 75000, money: 100000 },
+        job: "",
         weaponData: { use: true ,image: "pistol", name: "WEAPON NAME" , currentAmmo: 32, maxAmmo: 128 , isWeaponMelee: true},
         streetName: "",
         voice: {mic:false, radio:false, range: 2}

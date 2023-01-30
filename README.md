@@ -1,13 +1,13 @@
 <h1 align='center'>[ESX] HUD</a></h1><p align='center'><b><a href='https://discord.esx-framework.org/'>Discord</a> - <a href='https://documentation.esx-framework.org/legacy/installation'>Documentation</a></b></h5>
 
-We've brought you a clean, modern HUD that's easy to customise and configure. Integrated custom cruise control, mileage calculation and more.
+We've brought you a clean, modern HUD that's easy to customise and configure. Integrated mileage calculation and more.
 
 Features
- - Cruise control system
  - Mileage calculation system
  - Indicator system with sound effect
  - Weapon HUD with ammo counter
  - Online player counter
+ - Job label
  - Switch to mph or kmh
  - Color picker that allows you to customize the interface
  - Settings panel for additional settings

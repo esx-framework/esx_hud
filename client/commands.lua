@@ -1,12 +1,12 @@
-isHidden = false
+HUD.Data.hudHidden = false
 RegisterCommand('hud', function()
-    HUD:Toggle(isHidden)
-    isHidden = not isHidden
+    HUD:Toggle(HUD.Data.hudHidden)
+    HUD.Data.hudHidden = not HUD.Data.hudHidden
 end, false)
 
 RegisterCommand('togglehud', function()
-    HUD:Toggle(isHidden)
-    isHidden = not isHidden
+    HUD:Toggle(HUD.Data.hudHidden)
+    HUD.Data.hudHidden = not HUD.Data.hudHidden
 end, false)
 
 RegisterCommand('hudsettings', function ()
@@ -33,26 +33,8 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
 
     ESX.RegisterInput('esx_hud:toggleEngine', Translate('toggleEngine'), "keyboard", "N", function()
         if not HUD.Data.Vehicle then return end
-        HUD.CruiseControl:Disable()
         local engineState = GetIsVehicleEngineRunning(HUD.Data.Vehicle)
         engineState = not engineState
         SetVehicleEngineOn(HUD.Data.Vehicle, engineState, true, true)
-    end)
-end
-
-if not Config.Disable.CruiseControl and not Config.Disable.Vehicle then
-    ESX.RegisterInput('esx_hud:cruisecontrol:Enable', Translate('cruiseControl'), "keyboard", "U", function()
-        if not HUD.Data.Vehicle then return end
-        HUD.CruiseControl:Enable()
-    end)
-
-    ESX.RegisterInput('esx_hud:cruisecontrol:IncreaseSpeed', Translate('increaseSpeed'), "keyboard", "ADD", function()
-        if not HUD.Data.Vehicle then return end
-        HUD.CruiseControl:ChangeSpeed(true)
-    end)
-
-    ESX.RegisterInput('esx_hud:cruisecontrol:DecreaseSpeed', Translate('decreaseSpeed'), "keyboard", "SUBTRACT", function()
-        if not HUD.Data.Vehicle then return end
-        HUD.CruiseControl:ChangeSpeed(false)
     end)
 end
