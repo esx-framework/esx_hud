@@ -67,7 +67,7 @@ jobs:
           mkdir -p ./temp/esx_hud
           mkdir -p ./temp/esx_hud/web
           cp ./fxmanifest.lua ./temp/esx_hud
-          cp -r ./{client,locales,server,stream} ./temp/esx_hud
+          cp -r ./{client,locales,server,stream,shared} ./temp/esx_hud
           cp -r ./web/dist ./temp/esx_hud/web/dist
           cd ./temp && zip -r ../esx_hud.zip ./esx_hud
       - name: Create Release
