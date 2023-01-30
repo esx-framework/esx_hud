@@ -47,7 +47,7 @@ function HUD:SlowThick()
             if not Config.Disable.Weapon then
                 self.Data.Weapon.Active, self.Data.Weapon.CurrentWeapon = GetCurrentPedWeapon(PlayerPedId(), false)
                 if self.Data.Weapon.CurrentWeapon == 0 then self.Data.Weapon.Active = false end
-                if self.Data.Weapon.Active then
+                if self.Data.Weapon.Active and WeaponList[self.Data.Weapon.CurrentWeapon] then
                     self.Data.Weapon.MaxAmmo = (GetAmmoInPedWeapon(PlayerPedId(), self.Data.Weapon.CurrentWeapon)-ammoInClip)
                     self.Data.Weapon.Name = WeaponList[self.Data.Weapon.CurrentWeapon].label and WeaponList[self.Data.Weapon.CurrentWeapon].label or false
                     self.Data.Weapon.isWeaponMelee = not WeaponList[self.Data.Weapon.CurrentWeapon].ammo
