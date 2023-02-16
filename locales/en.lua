@@ -11,5 +11,5 @@ Locales["en"] = {
     yourVersion = "Your version: ",
     latestVersion = "You are using the latest version!",
     needUpdateResource = "You need download latest version! You are using an old version at the moment!",
-    errorGetCurrentVersion = "You get error when try get current version!"
+    errorGetCurrentVersion = "An error occurred while trying to get the current version!"
 }
