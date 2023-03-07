@@ -18,7 +18,7 @@ function HUD:InfoHandle(msg, color)
 end
 
 function HUD:UpdatePlayerCount()
-    TriggerClientEvent('esx_hud:UpdatePlayerCount', -1, HUD.Data.OnlinePlayers)
+    GlobalState['OnlinePlayers'] = HUD.Data.OnlinePlayers
 end
 
 VERSION = {
