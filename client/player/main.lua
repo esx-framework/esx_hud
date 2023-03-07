@@ -64,6 +64,8 @@ end
 function HUD:FastThick()
     CreateThread(function()
         while not ESX.PlayerLoaded do Wait(200) end
+        local plyId = GetPlayerServerId(PlayerId())
+        local srvLogo = Config.Default.ServerLogo
         while ESX.PlayerLoaded do
             if not Config.Disable.Voice then
                 self.Data.isTalking = NetworkIsPlayerTalking(PlayerId())
@@ -75,9 +77,9 @@ function HUD:FastThick()
             end
 
             local values = {
-                playerId = GetPlayerServerId(PlayerId()),
-                onlinePlayers = self.Data.OnlinePlayers,
-                serverLogo = Config.Default.ServerLogo,
+                playerId = plyId,
+                onlinePlayers = GlobalState["OnlinePlayers"],
+                serverLogo = srvLogo,
                 moneys = { bank = self.Data.Money.bank or 0, money = self.Data.Money.cash or 0 },
                 weaponData = {
                     use =  self.Data.Weapon.Active,
@@ -115,10 +117,6 @@ end)
 AddEventHandler('esx:pauseMenuActive', function(state)
     if HUD.Data.hudHidden then return end
     HUD:Toggle(not state)
-end)
-
-RegisterNetEvent('esx_hud:UpdatePlayerCount', function(playerCount)
-    HUD.Data.OnlinePlayers = playerCount
 end)
 
 -- job handler
