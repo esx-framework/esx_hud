@@ -11,5 +11,5 @@ Locales["nl"] = {
     yourVersion = "Jouw versie: ",
     latestVersion = "Je gebruikt de laatste versie !",
     needUpdateResource = "Je bent een oude versie aan het gebruiken ! download de nieuwste versie !",
-    errorGetCurrentVersion = "Er is een error ontstaan tijdens het nakijken van de huidige versie !"
+    errorGetCurrentVersion = "Er is een error ontstaan tijdens het ophalen van de huidige versie !"
 }
