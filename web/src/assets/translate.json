@@ -53,14 +53,14 @@
       "info": "Info HUD ON/OFF",
       "indicatorsound": "Indicator sound ON/OFF",
       "minimaponfoot": "Minimap on foot ON/OFF",
-      "vehiclehandlers":"Vehicle handlers(Engine toggle, Indicator lights) ON/OFF",
+      "vehiclehandlers": "Vehicle handlers(Engine toggle, Indicator lights) ON/OFF",
       "needle": "Needle ON/OFF",
       "kmh": "KMH",
       "mph": "MPH",
-      "changeunit":"Change unit:",
+      "changeunit": "Change unit:",
       "statuspercent": "Status percent ON/OFF",
       "centerstatuses": "Center statuses ON/OFF",
-      "passengerspeedo":"Passenger speedo ON/OFF"
+      "passengerspeedo": "Passenger speedo ON/OFF"
     }
   },
   "HU": {
@@ -124,7 +124,7 @@
       "changeunit": "Sebesség mértékegysége:",
       "statuspercent": "Státusz százalék BE/KI",
       "centerstatuses": "Státusz középre mozgatás BE/KI",
-      "passengerspeedo":"Kilóméter óra anyós ülésen BE/KI"
+      "passengerspeedo": "Kilóméter óra anyós ülésen BE/KI"
     }
   }
 }

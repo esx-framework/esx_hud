@@ -3,22 +3,27 @@
 We've brought you a clean, modern HUD that's easy to customise and configure. Integrated mileage calculation and more.
 
 Features
- - Mileage calculation system
- - Indicator system with sound effect
- - Weapon HUD with ammo counter
- - Online player counter
- - Job label
- - Switch to mph or kmh
- - Color picker that allows you to customize the interface
- - Settings panel for additional settings
- - Different speedo layouts depending on vehicle type(LAND,AIR)
+
+- Mileage calculation system
+- Indicator system with sound effect
+- Weapon HUD with ammo counter
+- Online player counter
+- Job label
+- Switch to mph or kmh
+- Color picker that allows you to customize the interface
+- Settings panel for additional settings
+- Different speedo layouts depending on vehicle type(LAND,AIR)
 
 ## HUD UI
+
 ![img.png](img.png)
+
 ## SETTINGS UI
+
 ![img_1.png](img_1.png)
 
 ## Developed by Gellipapa#9186 && Rav3n95#2849
+
 ## Special thanks: Csoki,csontvazharcos,Füsti
 
 ## Download & Installation
@@ -30,6 +35,7 @@ Features
 - Enjoy
 
 ## Installation
+
 - Add this to your `server.cfg`:
 
 ```
@@ -37,7 +43,9 @@ ensure esx_hud
 ```
 
 # Legal
+
 ### License
+
 esx_hud - hud script for ESX
 
 Copyright (C) 2023 ESX-Framework
