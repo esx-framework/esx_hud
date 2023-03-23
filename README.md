@@ -12,6 +12,7 @@ Features
  - Color picker that allows you to customize the interface
  - Settings panel for additional settings
  - Different speedo layouts depending on vehicle type(LAND,AIR)
+ - Fixed some errors of hud
 
 ## HUD UI
 ![img.png](img.png)

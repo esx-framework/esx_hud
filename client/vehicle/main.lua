@@ -71,7 +71,7 @@ if not Config.Disable.Vehicle then
                     if oldPos then
                         local distance = #(oldPos - playerPos)
                         if distance >= 10 then
-                            currentMileage += Config.Default.Kmh and distance / 1000 or distance / 1620
+                            currentMileage = Config.Default.Kmh and distance / 1000 or distance / 1620
                             currentMileage = ESX.Math.Round(currentMileage, 2)
                             oldPos = playerPos
                         end

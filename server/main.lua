@@ -78,12 +78,12 @@ RegisterNetEvent('esx_hud:ErrorHandle', function(msg)
 end)
 
 AddEventHandler('playerJoining', function(playerId, reason)
-    HUD.Data.OnlinePlayers += 1
+    HUD.Data.OnlinePlayers = 1
     HUD:UpdatePlayerCount()
 end)
 
 AddEventHandler('playerDropped', function()
-    HUD.Data.OnlinePlayers += -1
+    HUD.Data.OnlinePlayers = -1
     if HUD.Data.OnlinePlayers < 0 then
         HUD.Data.OnlinePlayers = 0
     end
