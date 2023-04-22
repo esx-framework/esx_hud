@@ -34,7 +34,7 @@ export const CircleProgressContainer = (props) =>{
                 return 'flex-col-status'
             }
         }
-        if(settings().CenterStatuses){
+        if(!settings().CenterStatuses){
             return 'center-statuses'
         }
         return 'flex-status'
@@ -45,7 +45,7 @@ export const CircleProgressContainer = (props) =>{
             <div className={getGoodClassName()}>
                 <For each={hudStorageState.status}>{(progress, i) =>
                     <Show keyed when={progress.progressLevel > 0}>
-                        <CircleProgress showPercent={settings().StatusPercent} icon={progress.icon} progressLevel={progress.progressLevel} color={getCurrentColor(progress.name,"statusColors")} circleWidth={currentWidth()} />
+                        <CircleProgress showPercent={!settings().StatusPercent} icon={progress.icon} progressLevel={progress.progressLevel} color={getCurrentColor(progress.name,"statusColors")} circleWidth={currentWidth()} />
                     </Show>
                 }</For>
             </div>

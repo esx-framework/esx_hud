@@ -51,12 +51,12 @@ Config = {
         VehicleHandlers = false, -- Engine toggle, Indicator lights
         MinimapOnFoot = false,
         Needle = true,
-        StatusPercent = false,
-        CenterStatuses = false,
-        PassengerSpeedo = true
+        StatusPercent = true,
+        CenterStatuses = false
     },
     Default = {
         ServerLogo = 'https://esx.s3.fr-par.scw.cloud/blanc-800x800.png',
         Kmh = false,
+        PassengerSpeedo = false -- if this true , you can see speedometer if you don't driver
     }
 }

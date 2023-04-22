@@ -33,7 +33,7 @@ if not Config.Disable.Vehicle then
                 HUD.Data.Driver = driverCheck(currentVehicle)
                 playerPos = GetEntityCoords(PlayerPedId()).xy
 
-                if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then
+                if not Config.Default.PassengerSpeedo and not HUD.Data.Driver then
                     SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
                 end
                 Wait(1000)
