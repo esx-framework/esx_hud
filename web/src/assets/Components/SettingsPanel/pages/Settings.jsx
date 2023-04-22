@@ -42,7 +42,6 @@ export const Settings = () => {
         if(name === "MinimapOnFoot"){
             Nui.send("minimapSettingChanged",{changed: !value})
         }
-        console.log(name,value)
         setSettingsByName(name)
     }
 

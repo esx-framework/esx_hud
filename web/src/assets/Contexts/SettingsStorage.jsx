@@ -376,8 +376,6 @@ export default function SettingsStorage(props){
                 }))
             return
         }
-        console.log("SET SETTINGS")
-        console.log(store.settings[settingsName])
         setStore("settings",
             produce((data) => {
                 data[settingsName] = !data[settingsName]
