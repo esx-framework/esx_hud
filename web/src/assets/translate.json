@@ -63,6 +63,70 @@
       "passengerspeedo":"Passenger speedo ON/OFF"
     }
   },
+  "DE": {
+    "General": {
+      "status": "Status",
+      "speedo": "Geschwindigkeitszähler",
+      "settings": "Einstellungen",
+      "reset": "Zurücksetzen",
+      "save": "Speichern",
+      "info": "Jede Farbe auswählen um die Farbe zu ändern",
+      "currentedit": "Derzeitige Bearbeitung:"
+    },
+    "Status": {
+      "healthbar": "Heilungsleiste",
+      "armorbar": "Weste",
+      "drinkbar": "Trinken",
+      "foodbar": "Essen",
+      "oxygenbar": "Luft",
+      "staminabar": "Ausdauer",
+      "circlewidth": "Status Kreisbreite"
+    },
+    "Speedo": {
+      "segment-color": "Segmentfarbe",
+      "segment-progress-color": "Segmentfortschrittsfarbe",
+      "number-color": "Nummerfarbe",
+      "danger-color": "Gefahrenfarbe",
+      "danger-progress-color": "Gefahrenfortschrittsfarbe",
+      "number-danger-color": "Nummernfortschrittsfarbe",
+      "speedo-progress-color": "Geschwindigkeitsfortschrittsfarbe",
+      "damage-progress-color": "Schadensfortschrittsfarbe",
+      "engine-icon-color": "Motor Bild Farbe",
+      "tempomat-icon-color": "Tempomat Bild Farbe",
+      "light-icon-color": "Licht Bild FaRBE",
+      "door-icon-color": "Tür Bild Farbe",
+      "fuel-icon-color": "Benzin Bild Farbe",
+      "fuel-level-color": "Benzinanzeige Farbe",
+      "mileage-level-color": "Kilometerstand Farbe",
+      "unit-color": "Einheitenfarbe",
+      "current-speed-color": "Derzeitige Geschwindkeitsfarbe",
+      "left-right-index-color": "Links Rechts Index Farbe",
+      "damage-icon-color": "Schaden Bild Farbe",
+      "speedo-background-color": "Geschwindigkeit Hintergrundsfarbe",
+      "speedo-outer-circle-color": "Tacho Farbe",
+      "speedo-nooble-color": "Tacho Nooble Farbe",
+      "speedo-nooble-container": "Tacho Noble container"
+    },
+    "Settings": {
+      "status": "Status HUD AN/AUS",
+      "vehicle": "Fahrzeug HUD AN/AUS",
+      "weapon": "Waffen HUD AN/AUS",
+      "position": "Positions HUD AN/AUS",
+      "voice": "Stimmen HUD AN/AUS",
+      "money": "Geld HUD AN/AUS",
+      "info": "Info HUD AN/AUS",
+      "indicatorsound": "Blinker Ton AN/AUS",
+      "minimaponfoot": "Minimap zu Fuß AN/AUS",
+      "vehiclehandlers":"Fahrzeug Infos(Motor An/Ausschalten, Blinker) AN/AUS",
+      "needle": "Nadel AN/AUS",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Unit Ändern:",
+      "statuspercent": "Status prozent AN/AUS",
+      "centerstatuses": "Mittel Statusse AN/AUS",
+      "passengerspeedo":"Beifahrer Tacho AN/AUS"
+    }
+  },
   "HU": {
     "General": {
       "status": "Státusz",
