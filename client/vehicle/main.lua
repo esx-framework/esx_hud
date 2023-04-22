@@ -1,10 +1,9 @@
 local cruiseControlStatus = false
+local isPassenger = false
 
 local function SetCruiseControlState(state)
     cruiseControlStatus = state
 end
-
-local PASSENGER = false
 
 exports('CruiseControlState', function(...)
     SetCruiseControlState(...)
@@ -37,7 +36,7 @@ if not Config.Disable.Vehicle then
 
                 if not Config.Default.PassengerSpeedo and not HUD.Data.Driver then
                     SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
-                    PASSENGER = true
+                    isPassenger = true
                 end
                 Wait(1000)
             end
@@ -116,7 +115,7 @@ if not Config.Disable.Vehicle then
                 values.speed = Config.Default.Kmh and math.floor(currentSpeed * 3.6) or math.floor(currentSpeed * 2.236936)
                 values.rpm = rpm
                 values.defaultIndicators.engine = engineRunning
-                if not PASSENGER then
+                if not isPassenger then
                     SendNUIMessage({ type = 'VEH_HUD', value = values })
                 end
                 Wait(50)
@@ -172,7 +171,7 @@ if not Config.Disable.Vehicle then
             TriggerServerEvent('esx_hud:ExitedVehicle', currentPlate, currentMileage, Config.Default.Kmh)
         end
         currentMileage = 0
-        PASSENGER = false
+        isPassenger = false
     end)
 
     RegisterNetEvent('esx_hud:UpdateMileage', function(mileage)
