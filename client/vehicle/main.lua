@@ -45,7 +45,7 @@ if not Config.Disable.Vehicle then
         CreateThread(function()
             local oldPos = nil
 
-            while inVehicle do
+            while inVehicle and DoesEntityExist(currentVehicle) do
                 local engineHealth = math.floor(GetVehicleEngineHealth(currentVehicle) / 10)
                 local _, lowBeam, highBeam = GetVehicleLightsState(currentVehicle)
                 local lightState = false
