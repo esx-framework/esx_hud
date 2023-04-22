@@ -63,6 +63,70 @@
       "passengerspeedo":"Passenger speedo ON/OFF"
     }
   },
+   "NL": {
+    "General": {
+      "status": "Status",
+      "speedo": "Snelheidsmeter",
+      "settings": "Instellingen",
+      "reset": "Reset",
+      "save": "Opslaan",
+      "info": "Klik op een kleurkiezer als u de kleuren wilt veranderen.!",
+      "currentedit": "Huidige bewerking:"
+    },
+    "Status": {
+      "healthbar": "Gezondheidsbar",
+      "armorbar": "Pantserbar",
+      "drinkbar": "Dorst bar",
+      "foodbar": "Honger bar",
+      "oxygenbar": "Zuurstof bar",
+      "staminabar": "Stamina bar",
+      "circlewidth": "Breedte status cirkel"
+    },
+    "Speedo": {
+      "segment-color": "kleursegment",
+      "segment-progress-color": "segment voortgang kleur",
+      "number-color": "nummerkleur",
+      "danger-color": "gevarenkleur",
+      "danger-progress-color": "gevaar voortgang kleur",
+      "number-danger-color": "kleur gevarennummer",
+      "speedo-progress-color": "kleur snelheidsmeter voortgang",
+      "damage-progress-color": "kleur schade voortgang",
+      "engine-icon-color": "kleur motor icoon",
+      "tempomat-icon-color": "kleur tempomat icoon",
+      "light-icon-color": "kleur lichtpictogram",
+      "door-icon-color": "kleur deur icoon",
+      "fuel-icon-color": "kleur brandstof icoon",
+      "fuel-level-color": "kleur brandstof level",
+      "mileage-level-color": "kilometerstand kleur",
+      "unit-color": "eenheid kleur",
+      "current-speed-color": "huidige snelheid kleur",
+      "left-right-index-color": "links rechts index kleur",
+      "damage-icon-color": "kleur schadepictogram",
+      "speedo-background-color": "snelheidsmeter achtergrond kleur",
+      "speedo-outer-circle-color": "kleur snelheidsmeter buitenste cirkel",
+      "speedo-nooble-color": "kleur snelheidsmeter nooble",
+      "speedo-nooble-container": "snelheidsmeter nooble container"
+    },
+    "Settings": {
+      "status": "Status HUD AAN/UIT",
+      "vehicle": "Voertuig HUD AAN/UIT",
+      "weapon": "Wapen HUD AAN/UIT",
+      "position": "Positie HUD AAN/UIT",
+      "voice": "Spraak HUD AAN/UIT",
+      "money": "Geld HUD AAN/UIT",
+      "info": "Info HUD AAN/UIT",
+      "indicatorsound": "Indicator geluid AAN/UIT",
+      "minimaponfoot": "Minimap te voet AAN/UIT",
+      "vehiclehandlers":"Voertuig handlers(Motor toggle, Indicator lichten) AAN/UIT",
+      "needle": "Naald AAN/UIT",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Verander eenheid:",
+      "statuspercent": "Status procent AAN/UIT",
+      "centerstatuses": "Centreer statussen AAN/UIT",
+      "passengerspeedo":"Passagier snelheidsmeter AAN/UIT"
+    }
+  },
   "HU": {
     "General": {
       "status": "Státusz",
