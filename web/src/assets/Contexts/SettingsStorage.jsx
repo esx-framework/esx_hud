@@ -176,6 +176,7 @@ const initialState = {
     },
     pickedColor: "",
     currentCircleWidth: "",
+    currentSpeedoSize: "",
     selectedElementName: "",
     selectedMenuName: "",
     showPanel: false,
@@ -192,7 +193,7 @@ export default function SettingsStorage(props){
      * Init load check if exist localstorage load saved values
      */
     onMount(()=>{
-        const datas = ["statusColors","speedoColors","settings"]
+        const datas = ["statusColors","speedoColors","settings", "currentCircleWidth", "currentSpeedoSize"]
         datas.forEach((dataKey)=>{
             let currentData = handleLocalStorage(dataKey,"get")
             if(!currentData){
@@ -203,13 +204,11 @@ export default function SettingsStorage(props){
             if(dataKey === "speedoColors"){
                 changeThemeColors(currentData)
             }
-        })
 
-        const circleWidth = handleLocalStorage("circleWidth","get")
-        if(!circleWidth){
-            return
-        }
-        setStore("currentCircleWidth",circleWidth)
+            if(dataKey === "currentSpeedoSize"){
+                setCurrentSpeedoSize(currentData)
+            }
+        })
     })
 
     /**
@@ -238,6 +237,16 @@ export default function SettingsStorage(props){
     function setCurrentCircleWidth(newWidth){
         setStore("currentCircleWidth", newWidth)
     }
+
+    /**
+     * Set current size value in range slider
+     * @param newWidth current width value
+     */
+        function setCurrentSpeedoSize(newSize){
+            setStore("currentSpeedoSize", newSize)
+            const r = document.querySelector(':root');
+            r.style.setProperty('--speedo-scale-size', newSize);
+        }
 
     /**
      * Set current selected element name
@@ -304,6 +313,8 @@ export default function SettingsStorage(props){
         if(currentSelectedMenu === "speedo"){
             changeThemeColors(speedoDefaultColors)
             defaultData = speedoDefaultColors
+            handleLocalStorage("currentSpeedoSize","remove")
+            setCurrentSpeedoSize(0.9)
         }
 
         defaultData.forEach((data)=>{
@@ -316,7 +327,7 @@ export default function SettingsStorage(props){
 
         handleLocalStorage(selectMenu,"remove")
         if(currentSelectedMenu === "status"){
-            handleLocalStorage("circleWidth","remove")
+            handleLocalStorage("currentCircleWidth","remove")
         }
     }
 
@@ -332,9 +343,9 @@ export default function SettingsStorage(props){
         })
 
         if(currentSelectedMenu === "status"){
-            handleLocalStorage("circleWidth","add",store.currentCircleWidth)
+            handleLocalStorage("currentCircleWidth","add",store.currentCircleWidth)
         }
-
+        handleLocalStorage("currentSpeedoSize","add",store.currentSpeedoSize)
         handleLocalStorage(selectMenu,"add",newColors)
     }
 
@@ -433,7 +444,8 @@ export default function SettingsStorage(props){
                 toggleShowPanel,
                 setDefaultConfigs,
                 handleLocalStorage,
-                setCurrentCircleWidth
+                setCurrentCircleWidth,
+                setCurrentSpeedoSize
             }}>
                 {props.children}
             </DispatchContext.Provider>

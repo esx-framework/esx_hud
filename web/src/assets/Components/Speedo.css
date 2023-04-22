@@ -24,6 +24,7 @@
     --speedo-outer-circle-color: #242222;
     --speedo-nooble-color: #48a3cb;
     --speedo-nooble-container: #1f2937;
+    --speedo-scale-size: 0.9;
 }
 
 /* SVG DONT'T TOUCH PLEASE THANK YOU */
@@ -112,12 +113,12 @@
 
 
 .slideOut {
-    transform: translateY(200%) scale(0.9) !important;
+    transform: translateY(200%) scale(var(--speedo-scale-size)) !important;
 }
 
 .main-container {
     transform-origin: bottom right;
-    transform: scale(0.9);
+    transform: scale(var(--speedo-scale-size));
     transition: 0.5s all ease-in;
     height: 300px;
 }
