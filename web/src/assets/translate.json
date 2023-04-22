@@ -126,5 +126,69 @@
       "centerstatuses": "Státusz középre mozgatás BE/KI",
       "passengerspeedo":"Kilóméter óra anyós ülésen BE/KI"
     }
+  },
+    "SR": {
+    "General": {
+      "status": "Status",
+      "speedo": "Brzinometar",
+      "settings": "Podesavanja",
+      "reset": "Reset",
+      "save": "Sacuvaj",
+      "info": "Klikni na ikonicu ako zelis da promenis boju!",
+      "currentedit": "Trenutno editovanje:"
+    },
+    "Status": {
+      "healthbar": "Traka zdravlja",
+      "armorbar": "Traka pancira",
+      "drinkbar": "Traka pica",
+      "foodbar": "Traka hrane",
+      "oxygenbar": "Traka vazduha",
+      "staminabar": "Traka izdrzljivosti",
+      "circlewidth": "Sirina statusnog kruga"
+    },
+    "Speedo": {
+      "segment-color": "boja segmenta",
+      "segment-progress-color": "boja progresa segmenta",
+      "number-color": "boja broja",
+      "danger-color": "boja upozorenja",
+      "danger-progress-color": "boja progresa upozorenja",
+      "number-danger-color": "boja broja upozorenja",
+      "speedo-progress-color": "boja progresa brzinometra",
+      "damage-progress-color": "boja progresa ostecenosti",
+      "engine-icon-color": "boja ikonice motora",
+      "tempomat-icon-color": "boja ikonice tempomata",
+      "light-icon-color": "boja ikonice svetala",
+      "door-icon-color": "boja ikonice vrata",
+      "fuel-icon-color": "boja ikonice goriva",
+      "fuel-level-color": "boja nivoa goriva",
+      "mileage-level-color": "boja kilometraze",
+      "unit-color": "unit boja",
+      "current-speed-color": "boja trenutne brzine",
+      "left-right-index-color": "boja migavaca",
+      "damage-icon-color": "boja ikonice ostecenja",
+      "speedo-background-color": "pozadinska boja brzinometra",
+      "speedo-outer-circle-color": "boja kruga brzinometra",
+      "speedo-nooble-color": "nooble boja brzinometra",
+      "speedo-nooble-container": "brzinometar nooble container"
+    },
+    "Settings": {
+      "status": "Status HUD ON/OFF",
+      "vehicle": "HUD Vozila ON/OFF",
+      "weapon": "HUD Oruzja ON/OFF",
+      "position": "Pozicija HUD ON/OFF",
+      "voice": "Glasovni HUD ON/OFF",
+      "money": "Novac HUD ON/OFF",
+      "info": "Info HUD ON/OFF",
+      "indicatorsound": "Zvukovi Indikatora ON/OFF",
+      "minimaponfoot": "Minimapa van vozila ON/OFF",
+      "vehiclehandlers":"Delovi Vozila (Motor, Svetla) ON/OFF",
+      "needle": "Igla ON/OFF",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Promeni jedinicu:",
+      "statuspercent": "Procenti Statusa ON/OFF",
+      "centerstatuses": "Centrirani Statusi ON/OFF",
+      "passengerspeedo":"Brzinometar Putnika ON/OFF"
+    }
   }
 }
