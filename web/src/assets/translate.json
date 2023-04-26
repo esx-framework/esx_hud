@@ -63,6 +63,70 @@
       "passengerspeedo":"Passenger speedo ON/OFF"
     }
   },
+  "FR": {
+    "General": {
+      "status": "Status",
+      "speedo": "Compteur de vitesse",
+      "settings": "Paramètres",
+      "reset": "Réinitialiser",
+      "save": "Sauvegarder",
+      "info": "Cliquez sur n'importe quelle icône pour le modifier!",
+      "currentedit": "Edition en cours:"
+    },
+    "Status": {
+      "healthbar": "Barre de vie",
+      "armorbar": "Barre d'armure",
+      "drinkbar": "Barre de soif",
+      "foodbar": "Barre de faim",
+      "oxygenbar": "Barre d'oxygène",
+      "staminabar": "Barre d'endurance",
+      "circlewidth": "Largeur du cercle"
+    },
+    "Speedo": {
+      "segment-color": "Couleur segment",
+      "segment-progress-color": "Couleurs progression segment",
+      "number-color": "Couleur des numéro",
+      "danger-color": "Couleur sur-regime",
+      "danger-progress-color": "Couleur barre sur-régime",
+      "number-danger-color": "Couleur numéro sur-regime",
+      "speedo-progress-color": "Couleur barre vitessee",
+      "damage-progress-color": "Couleur barre dégâts",
+      "engine-icon-color": "Couleur icône moteur",
+      "tempomat-icon-color": "Couleur icône Cruise control",
+      "light-icon-color": "Couleur icône phare",
+      "door-icon-color": "Couleur icône porte",
+      "fuel-icon-color": "Couleur icône carburant",
+      "fuel-level-color": "Couleur niveau carburant",
+      "mileage-level-color": "Couleur kilométrage",
+      "unit-color": "Couleur unité vitesse",
+      "current-speed-color": "Couleur vitesse actuel",
+      "left-right-index-color": "Couleur des clignotant",
+      "damage-icon-color": "Couleru icône dégâts",
+      "speedo-background-color": "Couleur arrière plan",
+      "speedo-outer-circle-color": "couleur du cercle extérieur",
+      "speedo-nooble-color": "couleur de l'aguiller",
+      "speedo-nooble-container": "couleur fixation aiguille"
+    },
+    "Settings": {
+      "status": "HUD Status ON/OFF",
+      "vehicle": "HUD Véhicule ON/OFF",
+      "weapon": "HUD Armes ON/OFF",
+      "position": "HUD Position ON/OFF",
+      "voice": "HUD Voix ON/OFF",
+      "money": "HUD Argent ON/OFF",
+      "info": "Info HUD ON/OFF",
+      "indicatorsound": "Sons Clignotant ON/OFF",
+      "minimaponfoot": "Minimap à piedt ON/OFF",
+      "vehiclehandlers":"Véhicule (Moteur, clignotants) ON/OFF",
+      "needle": "Aiguille compteur ON/OFF",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Changer d'unité :",
+      "statuspercent": "Status en pourçent ON/OFF",
+      "centerstatuses": "Status centrer ON/OFF",
+      "passengerspeedo":"Compteur en passager ON/OFF"
+    }
+  },
   "DE": {
     "General": {
       "status": "Status",
@@ -191,7 +255,7 @@
       "passengerspeedo":"Kilóméter óra anyós ülésen BE/KI"
     }
   },
-    "SR": {
+  "SR": {
     "General": {
       "status": "Status",
       "speedo": "Brzinometar",
