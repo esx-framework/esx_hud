@@ -1,4 +1,5 @@
 Config = {
+    Locale = GetConvar('esx:locale', 'en'),
     Lang = GetConvar('esx:locale', 'en'):upper(),
     Colors = {
         Info = {
