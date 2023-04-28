@@ -1,6 +1,6 @@
 Config = {
     Locale = GetConvar('esx:locale', 'en'),
-    Lang = GetConvar('esx:locale', 'en'):upper(),
+    Lang = GetConvar('esx:locale', 'en'):upper(), -- If you want to change UI language texts you can do it here: web/src/assets/translate.json !!IMPORTANT that this can only be modified with the unbuilt version.
     Colors = {
         Info = {
             ['money-text-color'] = "#4d6973",
