@@ -176,7 +176,7 @@ export const Speedo = (props) =>{
         const divDeg = defaultObject.maxDeg/noOfDev
         let induCatorLinesPosLeft ,induCatorLinesPosTop,tempDiv,induCatorNumbPosLeft,induCatorNumbPosTop = ''
 
-        if(settings().Needle && vehType() !== VehType.AIR){
+        if(!settings().Needle && vehType() !== VehType.AIR){
             rows.push(<div class="speedNobe">
                 <div></div>
             </div>)
@@ -281,7 +281,7 @@ export const Speedo = (props) =>{
         const elementsTemplate = document.querySelectorAll('#templateSpeedoContainer .nob');
         const currentSpeed = VehType.AIR !== vehType() ? speed() : rpm()
 
-        if(settings().Needle){
+        if(!settings().Needle){
             const speedNoble = document.querySelectorAll('#speedoContainer .speedNobe')
             if(speedNoble.length > 0){
                 const speedInDeg = (266/defaultObject.maxVal) * currentSpeed + defaultObject.initDeg;
@@ -324,10 +324,10 @@ export const Speedo = (props) =>{
                 <DoorIcon state={indicators()?.door}/>
                 <LightIcon state={indicators()?.light} vehType={vehType() !== VehType.AIR}/>
                 <EngineIcon state={indicators()?.engine}/>
-                <Show when={settings().Needle} keyed>
+                <Show when={!settings().Needle} keyed>
                     <div class="speedoNoobleContainer absolute z-10 rounded-full w-10 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-[70%]"></div>
                 </Show>
-                <Show when={!settings().Needle} keyed>
+                <Show when={settings().Needle} keyed>
                         <h2 class="text-5xl z-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 textColor currentSpeedTextColor">{speed()}</h2>
                 </Show>
                 <div class="absolute w-[30%] top-1/2 left-1/2 -translate-x-1/2 translate-y-[15%]">
