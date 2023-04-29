@@ -27,7 +27,7 @@
   }
 
   .speedo {
-    @apply absolute bottom-0 right-8
+    @apply absolute bottom-4 right-8
   }
 
 }
