@@ -106,7 +106,8 @@
       "speedo-background-color": "Geschwindigkeit Hintergrundsfarbe",
       "speedo-outer-circle-color": "Tacho Farbe",
       "speedo-nooble-color": "Tacho Nooble Farbe",
-      "speedo-nooble-container": "Tacho Noble container"
+      "speedo-nooble-container": "Tacho Noble container",
+      "resize-speedo": "resize speedo"
     },
     "Settings": {
       "status": "Status HUD AN/AUS",
