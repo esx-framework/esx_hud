@@ -1,5 +1,5 @@
 {
-  "EN": {
+  "en": {
     "General": {
       "status": "Status",
       "speedo": "Speedometer",
@@ -64,7 +64,7 @@
       "passengerspeedo":"Passenger speedo ON/OFF"
     }
   },
-  "DE": {
+  "de": {
     "General": {
       "status": "Status",
       "speedo": "Geschwindigkeitszähler",
@@ -129,7 +129,7 @@
       "passengerspeedo":"Beifahrer Tacho AN/AUS"
     }
   },
-  "HU": {
+  "hu": {
     "General": {
       "status": "Státusz",
       "speedo": "Sebességmérő",
@@ -194,7 +194,7 @@
       "passengerspeedo":"Kilóméter óra anyós ülésen BE/KI"
     }
   },
-  "SR": {
+  "sr": {
     "General": {
       "status": "Status",
       "speedo": "Brzinometar",

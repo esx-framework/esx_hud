@@ -43,7 +43,7 @@ function App() {
                     value ? open() : close()
                     break;
                 case "SET_CONFIG_DATA":
-                    setLang(value["Lang"])
+                    setLang(value["Locale"])
                     setUpdateLang(true)
                     setDefaultConfigs(value)
                     const speedoColors = handleLocalStorage("speedoColors","get")
