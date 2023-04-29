@@ -19,7 +19,7 @@ export const translate = (translateKey,translateObjectName = "General",defaultKe
 export function setLang(currentLang){
     let newLang = currentLang.length > 0 ? currentLang : "EN"
     if(!TranslateData[currentLang]){
-        console.warn(`There is no such language type!  Current language type: ${currentLang}`)
+        console.warn(`There is no such language type!  Current language type: ${currentLang} If you want add other lang you can do here: web/src/assets/translate.json !!IMPORTANT this file only see with the unbuilt version.`)
         newLang = "EN"
     }
     lang = newLang

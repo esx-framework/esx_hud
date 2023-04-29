@@ -6,7 +6,7 @@ import {translate} from "../../../../Utils/Translate";
 const CheckBox = (props) =>{
     return(
         <div class="form-check flex">
-            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-800 checked:bg-[#0087D0] checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id={props?.name} checked={props?.state} onClick={props?.click}/>
+            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-800 checked:bg-[#0087D0] checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id={props?.name} checked={!props?.state} onClick={props?.click}/>
             <label class="form-check-label w-[75%]" for={props?.name}>
                 {props?.name}
             </label>

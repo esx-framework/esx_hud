@@ -1,4 +1,5 @@
 local cruiseControlStatus = false
+local isPassenger = false
 
 local function SetCruiseControlState(state)
     cruiseControlStatus = state
@@ -33,8 +34,9 @@ if not Config.Disable.Vehicle then
                 HUD.Data.Driver = driverCheck(currentVehicle)
                 playerPos = GetEntityCoords(PlayerPedId()).xy
 
-                if Config.Disable.PassengerSpeedo and not HUD.Data.Driver then
+                if not Config.Default.PassengerSpeedo and not HUD.Data.Driver then
                     SendNUIMessage({ type = 'VEH_HUD', value = { show = false } })
+                    isPassenger = true
                 end
                 Wait(1000)
             end
@@ -45,7 +47,7 @@ if not Config.Disable.Vehicle then
         CreateThread(function()
             local oldPos = nil
 
-            while inVehicle do
+            while inVehicle and DoesEntityExist(currentVehicle) do
                 local engineHealth = math.floor(GetVehicleEngineHealth(currentVehicle) / 10)
                 local _, lowBeam, highBeam = GetVehicleLightsState(currentVehicle)
                 local lightState = false
@@ -113,8 +115,9 @@ if not Config.Disable.Vehicle then
                 values.speed = Config.Default.Kmh and math.floor(currentSpeed * 3.6) or math.floor(currentSpeed * 2.236936)
                 values.rpm = rpm
                 values.defaultIndicators.engine = engineRunning
-
-                SendNUIMessage({ type = 'VEH_HUD', value = values })
+                if not isPassenger then
+                    SendNUIMessage({ type = 'VEH_HUD', value = values })
+                end
                 Wait(50)
             end
         end)
@@ -168,6 +171,7 @@ if not Config.Disable.Vehicle then
             TriggerServerEvent('esx_hud:ExitedVehicle', currentPlate, currentMileage, Config.Default.Kmh)
         end
         currentMileage = 0
+        isPassenger = false
     end)
 
     RegisterNetEvent('esx_hud:UpdateMileage', function(mileage)

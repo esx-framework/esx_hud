@@ -7,11 +7,14 @@ import {createEffect, onMount} from "solid-js";
 import {translate} from "../../../../Utils/Translate";
 
 
-const RangeSlider = (props) =>{
+export const RangeSlider = (props) =>{
+
+    const options = () => props?.options
 
     const handleChange = (e) =>{
-        props?.setWidth(e.target.value)
+        props?.setSize(e.target.value)
     }
+
 
     return(
         <div class="flex items-center justify-center gap-4 relative pt-1">
@@ -28,10 +31,10 @@ const RangeSlider = (props) =>{
                       bg-[#0087D0]
                       focus:outline-none focus:ring-0 focus:shadow-none
                     "
-                min="2"
-                max="5"
-                step="0.5"
-                value={props?.currentCircleWidth ? props?.currentCircleWidth : 2.5}
+                min={options().min}
+                max={options().max}
+                step={options().step}
+                value={props?.currentSize ? props?.currentSize : props?.defaultValue}
                 id="rangeWidth"
                 onChange={handleChange}
             />
@@ -44,9 +47,7 @@ export const Status = (props) => {
     const settingsStorageState = useSettingsStorageState();
     const { getCurrentColor,setCurrentCircleWidth } = useSettingsStorageDispatch();
 
-    // onMount(()=>{
-    //     setCurrentCircleWidth(2.5)
-    // })
+
 
     const currentElement = () => settingsStorageState.selectedElementName
     const currentWidth = () => settingsStorageState.currentCircleWidth
@@ -63,7 +64,7 @@ export const Status = (props) => {
                         <ColorPicker isActive={currentElement() === progress.name} name={progress.name} />
                     </div>
                 }</For>
-                <RangeSlider currentCircleWidth={currentWidth()} setWidth={setCurrentCircleWidth} name={translate("circleWidth","Status")}/>
+                <RangeSlider currentSize={currentWidth()} setSize={setCurrentCircleWidth} name={translate("circleWidth","Status")} defaultValue={2.5} options={{min: "2", max:"5", step: "0.5"}}/>
             </div>
         </>
     );

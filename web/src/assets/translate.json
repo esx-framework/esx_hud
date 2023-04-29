@@ -41,7 +41,8 @@
       "speedo-background-color": "speedo background color",
       "speedo-outer-circle-color": "speedo outer circle color",
       "speedo-nooble-color": "speedo nooble color",
-      "speedo-nooble-container": "speedo nooble container"
+      "speedo-nooble-container": "speedo nooble container",
+      "resize-speedo": "resize speedo"
     },
     "Settings": {
       "status": "Status HUD ON/OFF",
@@ -169,7 +170,8 @@
       "speedo-background-color": "Geschwindigkeit Hintergrundsfarbe",
       "speedo-outer-circle-color": "Tacho Farbe",
       "speedo-nooble-color": "Tacho Nooble Farbe",
-      "speedo-nooble-container": "Tacho Noble container"
+      "speedo-nooble-container": "Tacho Noble container",
+      "resize-speedo": "resize speedo"
     },
     "Settings": {
       "status": "Status HUD AN/AUS",
@@ -233,7 +235,8 @@
       "speedo-background-color": "Mérőlap háttér színe",
       "speedo-outer-circle-color": "Mérőegység keret színe",
       "speedo-nooble-color": "Sebességmérő tű szín",
-      "speedo-nooble-container": "Sebességmérő tű körlap színe"
+      "speedo-nooble-container": "Sebességmérő tű körlap színe",
+      "resize-speedo": "Sebességmérő átméretezése"
     },
     "Settings": {
       "status": "Státusz HUD BE/KI",
@@ -297,7 +300,8 @@
       "speedo-background-color": "pozadinska boja brzinometra",
       "speedo-outer-circle-color": "boja kruga brzinometra",
       "speedo-nooble-color": "nooble boja brzinometra",
-      "speedo-nooble-container": "brzinometar nooble container"
+      "speedo-nooble-container": "brzinometar nooble container",
+      "resize-speedo": "Speedo resize"
     },
     "Settings": {
       "status": "Status HUD ON/OFF",
