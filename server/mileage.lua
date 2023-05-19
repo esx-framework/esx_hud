@@ -50,6 +50,10 @@ if not Config.Disable.Vehicle then
     end
 
     function Mileage:Update(plate, mileage, playerId, kmh)
+        if not self.Data[plate] then
+            return
+        end
+        
         if kmh then
             mileage = mileage / 1.61
         end
