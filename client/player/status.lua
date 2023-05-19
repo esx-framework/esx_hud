@@ -9,8 +9,10 @@ if not Config.Disable.Status then
             if data[i].name == 'hunger' then hunger = math.floor(data[i].percent) end
         end
 
-        values.healthBar = math.floor((GetEntityHealth(PlayerPedId())/2))
-        values.armorBar = GetPedArmour(PlayerPedId())
+        local ped = PlayerPedId()
+
+        values.healthBar = math.floor((GetEntityHealth(ped) - 100) / (GetEntityMaxHealth(ped) - 100) * 100)
+        values.armorBar = GetPedArmour(ped)
         values.drinkBar = thirst
         values.foodBar = hunger
     end)
