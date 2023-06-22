@@ -136,8 +136,7 @@ if not Config.Disable.Vehicle then
         inVehicle = true
         HUD.Data.Driver = currentSeat == -1 or false
         HUD.Data.Vehicle = currentVehicle
-        vehicleType = vehicleClass == 15 or vehicleClass == 16 and 'AIR' or 'LAND'
-
+        vehicleType = (vehicleClass == 15 or vehicleClass == 16) and 'AIR' or 'LAND'
         -- We have to check if he changed seat meantime
         driverCheckThread(currentVehicle)
 
