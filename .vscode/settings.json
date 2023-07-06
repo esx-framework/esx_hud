@@ -1,8 +1,0 @@
-{
-    "Lua.diagnostics.globals": [
-        "ESX",
-        "Locales",
-        "Translate",
-        "MySQL"
-    ]
-}
