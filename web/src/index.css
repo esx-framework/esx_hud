@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap");
 
 @font-face {
   font-family: "Gilroy";
-  src: url('./assets/font/Gilroy-ExtraBold.otf');
+  src: url("./assets/font/Gilroy-ExtraBold.otf");
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .flex-col-status {
     @apply flex flex-col absolute bottom-10 left-7 transition-opacity;
   }
-  .center-statuses{
+  .center-statuses {
     @apply flex flex-col absolute bottom-[50%] translate-y-[50%] left-[1%] transition-opacity;
   }
 
@@ -23,13 +22,12 @@
   }
 
   .template-speedo {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
 
   .speedo {
-    @apply absolute bottom-4 right-8
+    @apply absolute bottom-4 right-8;
   }
-
 }
 
 * {
@@ -43,11 +41,11 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  background:transparent;
+  background: transparent;
   overflow: hidden;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   user-select: none;
-  color:white;
+  color: white;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -58,9 +56,8 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-4 -4 8 8%22%3E%3Ccircle r=%222%22 fill=%22%23fff%22/%3E%3C/svg%3E");
 }
 
-input[type="checkbox"]
-{
-  vertical-align:middle;
+input[type="checkbox"] {
+  vertical-align: middle;
 }
 
 /* width */
@@ -71,7 +68,7 @@ input[type="checkbox"]
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #1E2122;
+  background: #1e2122;
 }
 
 /* Handle */
@@ -84,16 +81,16 @@ input[type="checkbox"]
   background: #555;
 }
 
-.bodyPicker{
+.bodyPicker {
   position: absolute;
   top: 100px;
   left: 100px;
 }
 
-.slideDown{
+.slideDown {
   transform: translateY(0px);
 }
 
-.slideUp{
+.slideUp {
   transform: translateY(-100%);
 }
