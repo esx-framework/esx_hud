@@ -323,6 +323,71 @@
       "passengerspeedo":"Passagier snelheidsmeter AAN/UIT"
     }
   },
+    "it": {
+    "General": {
+      "status": "Stato",
+      "speedo": "Contakilometri",
+      "settings": "Impostazioni",
+      "reset": "Resetta",
+      "save": "Salva",
+      "info": "Clicca un campione di colore per cambiarlo!",
+      "currentedit": "Modifica attuale:"
+    },
+    "Status": {
+      "healthbar": "Bassa Salute",
+      "armorbar": "Barra Armatura",
+      "drinkbar": "Barra Sete",
+      "foodbar": "Barra Fame",
+      "oxygenbar": "Barra ossigeno",
+      "staminabar": "Barra Stamina",
+      "circlewidth": "Larghezza cerchio status"
+    },
+    "Speedo": {
+      "segment-color": "Colore segmento",
+      "segment-progress-color": "Colore segmento in uso",
+      "number-color": "Colore numero",
+      "danger-color": "Colore emergenza",
+      "danger-progress-color": Colore emergenza in uso",
+      "number-danger-color": "Colore numero pericolo",
+      "speedo-progress-color": "Colore segmento contakm",
+      "damage-progress-color": "Colore segmento danno",
+      "engine-icon-color": "Colore icone motore",
+      "tempomat-icon-color": "Colore icona tempomat",
+      "light-icon-color": "Colore icona chiaro",
+      "door-icon-color": "Colore icona porte",
+      "fuel-icon-color": "Colore icona carburante",
+      "fuel-level-color": "Colore livello carburante",
+      "mileage-level-color": "Colore kilometraggio",
+      "unit-color": "Colore unità",
+      "current-speed-color": "Colore velocità attuale",
+      "left-right-index-color": "Colore  freccia destra sinistra",
+      "damage-icon-color": "Colore icona danno",
+      "speedo-background-color": "Colore sfondo contakm",
+      "speedo-outer-circle-color": "Colore cerchio esterno contakm",
+      "speedo-nooble-color": "Colore nooble contakm",
+      "speedo-nooble-container": "Container nooble contakm",
+      "resize-speedo": "Dimensione contakm"
+    },
+    "Settings": {
+      "status": "Stato HUD ON/OFF",
+      "vehicle": "Veicolo HUD ON/OFF",
+      "weapon": "Armi HUD ON/OFF",
+      "position": "Posizione HUD ON/OFF",
+      "voice": "Voce HUD ON/OFF",
+      "money": "Denaro HUD ON/OFF",
+      "info": "Info HUD ON/OFF",
+      "indicatorsound": "Suono indicatori ON/OFF",
+      "minimaponfoot": "Minimappa a piedi ON/OFF",
+      "vehiclehandlers":"Accessori veicolo(stato motore, frecce di indicazione) ON/OFF",
+      "needle": "Ago ON/OFF",
+      "kmh": "KMH",
+      "mph": "MPH",
+      "changeunit":"Cambia unità:",
+      "statuspercent": "Percentuale Status ON/OFF",
+      "centerstatuses": "Accentra Status ON/OFF",
+      "passengerspeedo":"Contakm per passeggero ON/OFF"
+    }
+  },
   "fr": {
     "General": {
       "status": "Status",
