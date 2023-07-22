@@ -42,7 +42,8 @@
       "speedo-outer-circle-color": "speedo outer circle color",
       "speedo-nooble-color": "speedo nooble color",
       "speedo-nooble-container": "speedo nooble container",
-      "resize-speedo": "resize speedo"
+      "resize-speedo": "resize speedo",
+      "speedo-seatbelt-icon-color": "speedo seatbelt icon color"
     },
     "Settings": {
       "status": "Status HUD ON/OFF",
@@ -53,6 +54,7 @@
       "money": "Money HUD ON/OFF",
       "info": "Info HUD ON/OFF",
       "indicatorsound": "Indicator sound ON/OFF",
+      "indicatorseatbeltsound":"Seatbelt sound ON/OFF",
       "minimaponfoot": "Minimap on foot ON/OFF",
       "vehiclehandlers":"Vehicle handlers(Engine toggle, Indicator lights) ON/OFF",
       "needle": "Needle ON/OFF",
@@ -107,7 +109,8 @@
       "speedo-outer-circle-color": "Tacho Farbe",
       "speedo-nooble-color": "Tacho Nooble Farbe",
       "speedo-nooble-container": "Tacho Noble container",
-      "resize-speedo": "resize speedo"
+      "resize-speedo": "resize speedo",
+      "speedo-seatbelt-icon-color": "speedo seatbelt icon color"
     },
     "Settings": {
       "status": "Status HUD AN/AUS",
@@ -118,6 +121,7 @@
       "money": "Geld HUD AN/AUS",
       "info": "Info HUD AN/AUS",
       "indicatorsound": "Blinker Ton AN/AUS",
+      "indicatorseatbeltsound":"Seatbelt sound ON/OFF",
       "minimaponfoot": "Minimap zu Fuß AN/AUS",
       "vehiclehandlers":"Fahrzeug Infos(Motor An/Ausschalten, Blinker) AN/AUS",
       "needle": "Nadel AN/AUS",
@@ -172,7 +176,8 @@
       "speedo-outer-circle-color": "Mérőegység keret színe",
       "speedo-nooble-color": "Sebességmérő tű szín",
       "speedo-nooble-container": "Sebességmérő tű körlap színe",
-      "resize-speedo": "Sebességmérő átméretezése"
+      "resize-speedo": "Sebességmérő átméretezése",
+      "speedo-seatbelt-icon-color": "Biztonsági öv ikon színe"
     },
     "Settings": {
       "status": "Státusz HUD BE/KI",
@@ -183,6 +188,7 @@
       "money": "Pénz HUD BE/KI",
       "info": "Infó HUD BE/KI",
       "indicatorsound": "Indikátor hang BE/KI",
+      "indicatorseatbeltsound":"Biztonsági öv hang BE/KI",
       "minimaponfoot": "Minimap járműn kívül BE/KI",
       "vehiclehandlers": "Jármű opciók(Motor indítás, Indexek) BE/KI",
       "needle": "Sebességmérő tű BE/KI",
@@ -237,7 +243,8 @@
       "speedo-outer-circle-color": "boja kruga brzinometra",
       "speedo-nooble-color": "nooble boja brzinometra",
       "speedo-nooble-container": "brzinometar nooble container",
-      "resize-speedo": "Speedo resize"
+      "resize-speedo": "Speedo resize",
+      "speedo-seatbelt-icon-color": "speedo seatbelt icon color"
     },
     "Settings": {
       "status": "Status HUD ON/OFF",
@@ -248,6 +255,7 @@
       "money": "Novac HUD ON/OFF",
       "info": "Info HUD ON/OFF",
       "indicatorsound": "Zvukovi Indikatora ON/OFF",
+      "indicatorseatbeltsound":"Seatbelt sound ON/OFF",
       "minimaponfoot": "Minimapa van vozila ON/OFF",
       "vehiclehandlers":"Delovi Vozila (Motor, Svetla) ON/OFF",
       "needle": "Igla ON/OFF",
@@ -301,7 +309,8 @@
       "speedo-background-color": "snelheidsmeter achtergrond kleur",
       "speedo-outer-circle-color": "kleur snelheidsmeter buitenste cirkel",
       "speedo-nooble-color": "kleur snelheidsmeter nooble",
-      "speedo-nooble-container": "snelheidsmeter nooble container"
+      "speedo-nooble-container": "snelheidsmeter nooble container",
+      "speedo-seatbelt-icon-color": "speedo seatbelt icon color"
     },
     "Settings": {
       "status": "Status HUD AAN/UIT",
@@ -312,6 +321,7 @@
       "money": "Geld HUD AAN/UIT",
       "info": "Info HUD AAN/UIT",
       "indicatorsound": "Indicator geluid AAN/UIT",
+      "indicatorseatbeltsound":"Seatbelt sound ON/OFF",
       "minimaponfoot": "Minimap te voet AAN/UIT",
       "vehiclehandlers":"Voertuig handlers(Motor toggle, Indicator lichten) AAN/UIT",
       "needle": "Naald AAN/UIT",
@@ -365,7 +375,8 @@
       "speedo-background-color": "Couleur arrière plan",
       "speedo-outer-circle-color": "couleur du cercle extérieur",
       "speedo-nooble-color": "couleur de l'aguiller",
-      "speedo-nooble-container": "couleur fixation aiguille"
+      "speedo-nooble-container": "couleur fixation aiguille",
+      "speedo-seatbelt-icon-color": "speedo seatbelt icon color"
     },
     "Settings": {
       "status": "HUD Status ON/OFF",
@@ -376,6 +387,7 @@
       "money": "HUD Argent ON/OFF",
       "info": "Info HUD ON/OFF",
       "indicatorsound": "Sons Clignotant ON/OFF",
+      "indicatorseatbeltsound":"Seatbelt sound ON/OFF",
       "minimaponfoot": "Minimap à piedt ON/OFF",
       "vehiclehandlers":"Véhicule (Moteur, clignotants) ON/OFF",
       "needle": "Aiguille compteur ON/OFF",

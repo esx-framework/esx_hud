@@ -14,6 +14,7 @@ let disableDefaultConfig = {
     Money: false,
     Info: false,
     IndicatorSound: false,
+    IndicatorSeatbeltSound: false,
     VehicleHandlers: false,
     MinimapOnFoot: false,
     Needle: false,
@@ -223,6 +224,10 @@ const speedoDefaultColors = [
         name: "speedo-nooble-container",
         color: "#1f2937",
     },
+    {
+        name: "speedo-seatbelt-icon-color",
+        color: "#D22B2B"
+    }
 ];
 
 const allColors = {

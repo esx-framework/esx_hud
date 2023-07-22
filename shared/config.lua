@@ -37,6 +37,7 @@ Config = {
             ["speedo-outer-circle-color"] = "#242222",
             ["speedo-nooble-color"] = "#48a3cb",
             ["speedo-nooble-container"] = "#1f2937",
+            ["speedo-seatbelt-icon-color"] = "#D22B2B"
         },
     },
     Disable = {
@@ -48,6 +49,7 @@ Config = {
         Money = false,
         Info = false,
         IndicatorSound = false, --vehicle index sound
+        IndicatorSeatbeltSound = false, --seatbelt sound
         VehicleHandlers = false, -- Engine toggle, Indicator lights
         MinimapOnFoot = false,
         Needle = true,

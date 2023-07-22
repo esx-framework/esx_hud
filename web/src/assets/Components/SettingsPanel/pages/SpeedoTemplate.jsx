@@ -16,7 +16,7 @@ export const SpeedoTemplate = (props) => {
 
     return (
         <div class="flex flex-col gap-5">
-            <div class="flex px-5">
+            <div class="flex px-5 gap-[3rem]">
                 <div class="relative z-10 p-2 flex flex-col gap-6 overflow-auto max-h-72">
                     <For each={speedoColors}>{(progress, i) =>
                         <div class="flex justify-between items-center gap-2">

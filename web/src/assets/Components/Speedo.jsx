@@ -2,6 +2,9 @@ import './Speedo.css'
 import {createEffect, createSignal, onCleanup, Show} from "solid-js";
 
 import Sound from '../IndicatorSound.mp3'
+import SeatbeltAlert from '../SeatbeltAlertSound.mp3';
+import SeatbeltOff from '../SeatbeltOffSound.mp3';
+import SeatbeltOn from '../SeatbeltOnSound.mp3';
 import {useHudStorageState} from "../Contexts/HudStorage";
 import {useSettingsStorageState} from "../Contexts/SettingsStorage";
 
@@ -129,6 +132,9 @@ const LightIcon = (props) => <svg class={`absolute ${props?.vehType ? 'right-[11
 const EngineIcon = (props) =><svg class="absolute left-[67px] bottom-[34px]"  width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path class="engineIcon" d="M7.08691 4.862V6.862H10.0869V8.862H7.08691L5.08691 10.862V13.862H3.08691V10.862H1.08691V18.862H3.08691V15.862H5.08691V18.862H8.08691L10.0869 20.862H18.0869V16.862H20.0869V19.862H23.0869V9.862H20.0869V12.862H18.0869V8.862H12.0869V6.862H15.0869V4.862H7.08691Z" fill-opacity={props?.state ? '1' : '0.5'}/>
 </svg>
+const SeatbeltIcon = (props) => <svg width="45" height="45" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class={` ${props?.state() ?  "blinkerOn" : "" } blink seatbeltIconColor`} d="M6.4623 0C6.86228 0 7.24587 0.158891 7.5287 0.441718C7.81153 0.724546 7.97042 1.10814 7.97042 1.50812C7.97042 2.34513 7.2993 3.01624 6.4623 3.01624C6.06232 3.01624 5.67872 2.85735 5.39589 2.57452C5.11307 2.2917 4.95418 1.9081 4.95418 1.50812C4.95418 1.10814 5.11307 0.724546 5.39589 0.441718C5.67872 0.158891 6.06232 0 6.4623 0ZM6.75638 9.64443C7.82752 9.64026 8.89787 9.70322 9.96114 9.83295C10.0064 7.7819 9.82541 5.97216 9.47854 5.27842C9.38051 5.07483 9.24478 4.90139 9.10151 4.75058L3.01624 9.96868C4.04176 9.80278 5.33121 9.64443 6.75638 9.64443ZM3.03886 11.3109C3.13689 12.623 3.33295 13.9501 3.64965 15.0812H5.21056C4.99188 14.4176 4.83353 13.641 4.71288 12.819C4.71288 12.819 6.4623 12.4872 8.21172 12.819C8.09107 13.641 7.93271 14.4176 7.71404 15.0812H9.27494C9.60673 13.9124 9.80278 12.5249 9.90081 11.1526C8.85742 11.0264 7.80737 10.9635 6.75638 10.964C5.30104 10.964 4.03422 11.1224 3.03886 11.3109ZM6.4623 3.7703C6.4623 3.7703 4.20012 3.7703 3.44606 5.27842C3.18967 5.79118 3.02378 6.89965 2.971 8.2645L7.91009 4.02668C7.16357 3.7703 6.4623 3.7703 6.4623 3.7703ZM11.4165 2.7674L10.5568 1.7645L7.91009 4.03422C8.32483 4.17749 8.76218 4.40371 9.10151 4.75058L11.4165 2.7674ZM13 10.4287C12.9321 10.406 11.8463 10.0516 9.96114 9.83295C9.9536 10.2628 9.93097 10.7077 9.90081 11.1526C11.5974 11.3637 12.5702 11.6879 12.5853 11.6879L13 10.4287ZM2.971 8.2645L0 10.8132L0.671114 11.9292C0.686195 11.9217 1.5609 11.5824 3.03886 11.3109C2.95592 10.2477 2.93329 9.19954 2.971 8.2645Z" fill-opacity="0.3"/>
+    </svg>
 
 
 export const Speedo = (props) =>{
@@ -137,8 +143,9 @@ export const Speedo = (props) =>{
     const settingsStorageState = useSettingsStorageState();
     const settings = () => settingsStorageState.settings
     const defaultConfigs = () => settingsStorageState.defaultConfigs
+    const [checkSound, setCheckSound] = createSignal(false)
     const [onIndex,setOnIndex] = createSignal(false)
-
+    const [seatbeltState, setSeatbeltState] = createSignal(false)
     const speedo = () => hudStorageState.speedo
     const indicators = () => speedo().defaultIndicators
     const damage = () => speedo().damageLevel
@@ -262,6 +269,12 @@ export const Speedo = (props) =>{
     }
 
     const IndicatorSound = new Audio(Sound);
+    const SeatbeltAlertSound = new Audio(SeatbeltAlert)
+    const SeatbeltOnSound = new Audio(SeatbeltOn)
+    const SeatbeltOffSound = new Audio(SeatbeltOff)
+    SeatbeltOnSound.volume = 0.5
+    SeatbeltOffSound.volume = 0.5
+    SeatbeltAlertSound.volume = 0.2
     IndicatorSound.volume = 0.2
     const indexTimer = setInterval(()=>{
         if((indicators().leftIndex || indicators().rightIndex)){
@@ -272,6 +285,14 @@ export const Speedo = (props) =>{
             }
             setOnIndex(onIndex => !onIndex)
         }
+        if(!indicators().seatbelt){
+            if(!settings().IndicatorSeatbeltSound && show()){
+                if(!props?.template && !checkSound()){
+                    SeatbeltAlertSound.play();
+                }
+            }
+            setSeatbeltState(seatbeltState => !seatbeltState)
+        }
     },500)
     onCleanup(() => clearInterval(indexTimer));
 
@@ -280,6 +301,20 @@ export const Speedo = (props) =>{
         const elements = document.querySelectorAll('#speedoContainer .nob');
         const elementsTemplate = document.querySelectorAll('#templateSpeedoContainer .nob');
         const currentSpeed = VehType.AIR !== vehType() ? speed() : rpm()
+
+        if(!settings().IndicatorSeatbeltSound){
+            if(indicators().seatbelt && !checkSound()){
+                if(!checkSound()){
+                    SeatbeltOnSound.play();
+                    setCheckSound(true)
+                }
+            }
+
+            if(checkSound() && !indicators().seatbelt){
+                SeatbeltOffSound.play();
+                setCheckSound(false)
+            }
+        }
 
         if(!settings().Needle){
             const speedNoble = document.querySelectorAll('#speedoContainer .speedNobe')
@@ -311,7 +346,6 @@ export const Speedo = (props) =>{
             }
         }
     })
-
 
     /* HUD COMPONENTS */
     const VehicleHud = () =>{
@@ -374,6 +408,13 @@ export const Speedo = (props) =>{
 
     return(
         <div class={`${props?.template ? 'template-main-container' : 'speedo main-container'} ${!show() && !props?.template ? 'slideOut' : ''}`}>
+
+            <Show when={!indicators().seatbelt} keyed>
+                <div class="w-10 h-10 absolute top-[26%] -left-[25%]">
+                    <SeatbeltIcon state={seatbeltState}/>
+                </div>
+            </Show>
+
             <div class="main-container2"></div>
 
             <Show when={vehType() === VehType.AIR} keyed>
