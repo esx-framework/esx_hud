@@ -55,6 +55,7 @@ const initialState = {
         vehType: "LAND",
         driver: false,
         defaultIndicators: {
+            seatbelt: false,
             tempomat: true,
             door: false,
             light: false,

@@ -141,6 +141,10 @@ const initialState = {
             name: "speedo-nooble-container",
             color: "#1f2937"
         },
+        {
+            name: "speedo-seatbelt-icon-color",
+            color: "#D22B2B"
+        }
     ],
     settings:{
         Status: false,
@@ -151,6 +155,7 @@ const initialState = {
         Money: false,
         Info: false,
         IndicatorSound: false,
+        IndicatorSeatbeltSound: false,
         VehicleHandlers:false,
         MinimapOnFoot:false,
         Needle: false,
@@ -167,6 +172,7 @@ const initialState = {
         Money: false,
         Info: false,
         IndicatorSound: false,
+        IndicatorSeatbeltSound: false,
         VehicleHandlers:false,
         MinimapOnFoot:false,
         Needle:false,
@@ -263,7 +269,6 @@ export default function SettingsStorage(props){
         const currentSelectedMenu = store.selectedMenuName ? store.selectedMenuName.toLowerCase() : 'status'
         const currentPickedColor = store.pickedColor
         const currentSelectedCircleName = store.selectedElementName
-
         setStore(
             `${currentSelectedMenu}Colors`,
             currentStatus => currentStatus.name === currentSelectedCircleName,
@@ -299,7 +304,7 @@ export default function SettingsStorage(props){
 
         Object.keys(colors).forEach((color)=>{
             r.style.setProperty(`--${color}`,colors[color])
-        }) 
+        })
 
     }
 

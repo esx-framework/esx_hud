@@ -1,5 +1,6 @@
 local cruiseControlStatus = false
 local isPassenger = false
+local isSeatbeltOn = false
 
 local function SetCruiseControlState(state)
     cruiseControlStatus = state
@@ -8,6 +9,16 @@ end
 exports("CruiseControlState", function(...)
     SetCruiseControlState(...)
 end)
+
+local function SetSeatbeltState(state)
+    isSeatbeltOn = state
+end
+
+exports("SeatbeltState",function(...)
+    SetSeatbeltState(...)
+end)
+
+
 
 if not Config.Disable.Vehicle then
     local inVehicle, vehicleType, playerPos = false, nil, nil
@@ -100,6 +111,7 @@ if not Config.Disable.Vehicle then
                 values.damage = engineHealth
                 values.vehType = vehicleType
                 values.driver = HUD.Data.Driver
+                values.defaultIndicators.seatbelt = isSeatbeltOn
                 values.defaultIndicators.tempomat = cruiseControlStatus
                 values.defaultIndicators.door = doorLockStatus
                 values.defaultIndicators.light = lightState

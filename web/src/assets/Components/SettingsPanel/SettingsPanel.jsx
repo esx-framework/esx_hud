@@ -147,7 +147,7 @@ export const SettingsPanel = () =>{
 
     return(
         <>
-            <div class={`relative bg-[#17191A] w-[600px] rounded-[25px] pb-4 ease-in duration-500 z-30 ${showPanel() ? 'slideDown' : 'slideUp'}`}>
+            <div class={`relative bg-[#17191A] w-[650px] rounded-[25px] pb-4 ease-in duration-500 z-30 ${showPanel() ? 'slideDown' : 'slideUp'}`}>
                 <MainPage currentPath={currentPath} onMenuClick={handleMenuClick}/>
                 <SaveResetButtons toggleShowPanel={toggleShowPanel} showEdit={showEdit()} currentSelectedMenu={selectedMenuName()} selectedName={currentSelectedElementName()} onSaveAndResetButtonClick={handleClickSaveAndReset}/>
                 <Routes>
