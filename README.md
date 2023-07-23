@@ -12,6 +12,7 @@ Features
  - Color picker that allows you to customize the interface
  - Settings panel for additional settings
  - Different speedo layouts depending on vehicle type(LAND,AIR)
+ - Seatbelt system with sound effect (Required script: esx_cruisecontrol)
 
 ## HUD UI
 ![img.png](img.png)
