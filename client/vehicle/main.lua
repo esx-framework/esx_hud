@@ -14,11 +14,9 @@ local function SetSeatbeltState(state)
     isSeatbeltOn = state
 end
 
-exports("SeatbeltState",function(...)
+exports("SeatbeltState", function(...)
     SetSeatbeltState(...)
 end)
-
-
 
 if not Config.Disable.Vehicle then
     local inVehicle, vehicleType, playerPos = false, nil, nil

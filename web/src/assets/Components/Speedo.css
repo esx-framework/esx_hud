@@ -24,7 +24,7 @@
     --speedo-nooble-color: #48a3cb;
     --speedo-nooble-container: #1f2937;
     --speedo-scale-size: 0.9;
-    --speedo-seatbelt-icon-color: #D22B2B;
+    --speedo-seatbelt-icon-color: #d22b2b;
 }
 
 /* SVG DONT'T TOUCH PLEASE THANK YOU */
@@ -163,7 +163,7 @@
     fill: var(--fuel-icon-color);
 }
 
-.seatbeltIconColor{
+.seatbeltIconColor {
     fill: var(--speedo-seatbelt-icon-color);
 }
 

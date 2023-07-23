@@ -226,8 +226,8 @@ const speedoDefaultColors = [
     },
     {
         name: "speedo-seatbelt-icon-color",
-        color: "#D22B2B"
-    }
+        color: "#D22B2B",
+    },
 ];
 
 const allColors = {
