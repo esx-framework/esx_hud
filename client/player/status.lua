@@ -1,41 +1,37 @@
 if not Config.Disable.Status then
-    local values = {}
     local playerId = PlayerId()
 
-    AddEventHandler("esx_status:onTick", function(data)
-        local hunger, thirst
-        for i = 1, #data do
-            if data[i].name == "thirst" then
-                thirst = math.floor(data[i].percent)
-            end
-            if data[i].name == "hunger" then
-                hunger = math.floor(data[i].percent)
-            end
-        end
-
-        local ped = PlayerPedId()
-
-        values.healthBar = math.floor((GetEntityHealth(ped) - 100) / (GetEntityMaxHealth(ped) - 100) * 100)
-        values.armorBar = GetPedArmour(ped)
-        values.drinkBar = thirst
-        values.foodBar = hunger
-    end)
-
     function HUD:StatusThread()
-        values = {}
+        local values = {} -- Use a local variable instead of a global one
+
         CreateThread(function()
             while ESX.PlayerLoaded do
-                local oxygen, stamina
-                oxygen = math.floor(GetPlayerUnderwaterTimeRemaining(playerId) * 10)
-                stamina = math.floor(100 - GetPlayerSprintStaminaRemaining(playerId))
-                if stamina == 0 then
-                    stamina = 1
+                local ped = PlayerPedId()
+                
+                -- Get health and armor values
+                values.healthBar = math.floor((GetEntityHealth(ped) - 100) / (GetEntityMaxHealth(ped) - 100) * 100)
+                values.armorBar = GetPedArmour(ped)
+                
+                -- Get thirst and hunger values
+                local data = ESX.GetPlayerData().get('statuses')
+                for i = 1, #data do
+                    if data[i].name == "thirst" then
+                        values.drinkBar = math.floor(data[i].percent)
+                    end
+                    if data[i].name == "hunger" then
+                        values.foodBar = math.floor(data[i].percent)
+                    end
                 end
-                if stamina == 100 then
-                    stamina = 0
-                end
-                values.oxygenBar = IsPedSwimmingUnderWater(PlayerPedId()) and oxygen or 0
+
+                -- Get oxygen and stamina values
+                local oxygen = math.floor(GetPlayerUnderwaterTimeRemaining(playerId) * 10)
+                local stamina = math.floor(100 - GetPlayerSprintStaminaRemaining(playerId))
+                stamina = math.min(100, math.max(0, stamina)) -- Ensure stamina is within [0, 100]
+
+                -- If swimming underwater, show oxygen bar; otherwise, set it to 0
+                values.oxygenBar = IsPedSwimmingUnderWater(ped) and oxygen or 0
                 values.staminaBar = stamina
+
                 SendNUIMessage({ type = "STATUS_HUD", value = values })
                 Wait(200)
             end
