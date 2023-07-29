@@ -20,7 +20,7 @@ Features
 ![img_1.png](img_1.png)
 
 ## Developed by Gellipapa#9186 && Rav3n95#2849
-## Special thanks: Csoki,csontvazharcos,Füsti
+## Special thanks: Csoki, csontvazharcos, Füsti
 
 ## Download & Installation
 
