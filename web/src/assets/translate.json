@@ -347,7 +347,7 @@
       "segment-progress-color": "Colore segmento in uso",
       "number-color": "Colore numero",
       "danger-color": "Colore emergenza",
-      "danger-progress-color": Colore emergenza in uso",
+      "danger-progress-color": "Colore emergenza in uso",
       "number-danger-color": "Colore numero pericolo",
       "speedo-progress-color": "Colore segmento contakm",
       "damage-progress-color": "Colore segmento danno",
