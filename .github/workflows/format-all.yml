@@ -23,13 +23,25 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
+      - name: Check exist lua files
+        id: check_lua_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "*.lua"
       - name: Install stylua and format files
+        if: steps.check_lua_files.outputs.files_exists == 'true'
         uses: JohnnyMorganz/stylua-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: v0.18.0
           args: -- .
+      - name: Check exist web files
+        id: check_web_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.{ts,js,css,html}"  
       - name: Format files with Prettier
+        if: steps.check_web_files.outputs.files_exists == 'true'
         run: |
             npx prettier --write '**/*.{ts,js,css,html}'
       - name: Update repo before push
