@@ -11,6 +11,7 @@ import {useSettingsStorageState} from "../Contexts/SettingsStorage";
 const VehType = {
     AIR:"AIR",
     LAND:"LAND",
+    MOTO: "MOTO",
 }
 
 const defaultObject = {
@@ -285,7 +286,7 @@ export const Speedo = (props) =>{
             }
             setOnIndex(onIndex => !onIndex)
         }
-        if(!indicators().seatbelt){
+        if(!indicators().seatbelt && vehType() !== VehType.MOTO){
             if(!settings().IndicatorSeatbeltSound && show()){
                 if(!props?.template && !checkSound()){
                     SeatbeltAlertSound.play();
@@ -409,7 +410,7 @@ export const Speedo = (props) =>{
     return(
         <div class={`${props?.template ? 'template-main-container' : 'speedo main-container'} ${!show() && !props?.template ? 'slideOut' : ''}`}>
 
-            <Show when={!indicators().seatbelt} keyed>
+            <Show when={!indicators().seatbelt && vehType() !== VehType.MOTO} keyed>
                 <div class="w-10 h-10 absolute top-[26%] -left-[25%]">
                     <SeatbeltIcon state={seatbeltState}/>
                 </div>
@@ -421,7 +422,7 @@ export const Speedo = (props) =>{
                 <AirHud/>
             </Show>
 
-            <Show when={vehType() === VehType.LAND} keyed>
+            <Show when={vehType() !== VehType.AIR} keyed>
                 <VehicleHud/>
             </Show>
 
