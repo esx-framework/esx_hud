@@ -128,7 +128,7 @@ if not Config.Disable.Vehicle then
                 local engineRunning = GetIsVehicleEngineRunning(currentVehicle)
                 local rpm
 
-                if vehicleType == "LAND" then
+                if vehicleType == "LAND" or vehicleType == "MOTO" then
                     rpm = engineRunning and (GetVehicleCurrentRpm(currentVehicle) * 450) or 0
                 else
                     rpm = math.ceil(ESX.PlayerData.coords.z)
@@ -160,7 +160,14 @@ if not Config.Disable.Vehicle then
         inVehicle = true
         HUD.Data.Driver = currentSeat == -1 or false
         HUD.Data.Vehicle = currentVehicle
-        vehicleType = (vehicleClass == 15 or vehicleClass == 16) and "AIR" or "LAND"
+        vehicleType = "LAND"
+
+        if vehicleClass == 15 or vehicleClass == 16 then
+            vehicleType = "AIR"
+        elseif vehicleClass == 8 then
+            vehicleType = "MOTO"
+        end
+
         -- We have to check if he changed seat meantime
         driverCheckThread(currentVehicle)
 
