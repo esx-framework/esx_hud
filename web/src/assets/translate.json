@@ -366,7 +366,8 @@
       "speedo-outer-circle-color": "Colore cerchio esterno contakm",
       "speedo-nooble-color": "Colore nooble contakm",
       "speedo-nooble-container": "Container nooble contakm",
-      "resize-speedo": "Dimensione contakm"
+      "resize-speedo": "Dimensione contakm",
+      "speedo-seatbelt-icon-color": "Colore icona cintura"
     },
     "Settings": {
       "status": "Stato HUD ON/OFF",
@@ -377,6 +378,7 @@
       "money": "Denaro HUD ON/OFF",
       "info": "Info HUD ON/OFF",
       "indicatorsound": "Suono indicatori ON/OFF",
+      "indicatorseatbeltsound":"Suono cintura ON/OFF",
       "minimaponfoot": "Minimappa a piedi ON/OFF",
       "vehiclehandlers":"Accessori veicolo(stato motore, frecce di indicazione) ON/OFF",
       "needle": "Ago ON/OFF",
