@@ -62,6 +62,11 @@ function HUD:SlowThick()
                     self.Data.Weapon.Image = string.gsub(WeaponList[self.Data.Weapon.CurrentWeapon].name, "WEAPON_", "")
                     self.Data.Weapon.Image = string.lower(self.Data.Weapon.Image)
                 end
+
+                --here we handle it when we find a hash that is not in the weapon list so we don't show the weapon data on the hud
+                if self.Data.Weapon.Active then
+                    self.Data.Weapon.Active = self.Data.Weapon.CurrentWeapon ~= 0 and self.Data.Weapon.Name and self.Data.Weapon.Image
+                end
             end
 
             Wait(1000)
@@ -93,8 +98,8 @@ function HUD:FastThick()
                 moneys = { bank = self.Data.Money.bank or 0, money = self.Data.Money.cash or 0 },
                 weaponData = {
                     use = self.Data.Weapon.Active,
-                    image = self.Data.Weapon.Image or "pistol",
-                    name = self.Data.Weapon.Name or "Pistol",
+                    image = self.Data.Weapon.Image or false,
+                    name = self.Data.Weapon.Name or false,
                     isWeaponMelee = self.Data.Weapon.isWeaponMelee,
                     currentAmmo = self.Data.Weapon.CurrentAmmo or 0,
                     maxAmmo = self.Data.Weapon.MaxAmmo or 0,
