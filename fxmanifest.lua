@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-description 'ESX hud'
+description 'The default HUD resource for ESX-Legacy.'
 version '1.7.0'
 
 shared_scripts {
