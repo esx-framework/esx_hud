@@ -1,5 +1,5 @@
 Locales["tr"] = {
-    toggleHud = "HUD\'u aç / kapat",
+    toggleHud = "HUD'u aç / kapat",
     indicatorLeft = "Sol sinyal",
     indicatorRight = "Sağ sinyal",
     toggleEngine = "Motoru aç / kapat",
