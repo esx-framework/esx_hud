@@ -2,6 +2,9 @@ function HUD:Toggle(state)
     SendNUIMessage({ type = "SHOW", value = state })
 end
 
+RegisterNetEvent('esx_hud:HudToggle', HUD:Toggle)
+exports('HudToggle', HUD:Toggle)
+
 function HUD:SetHudColor()
     SendNUIMessage({ type = "SET_CONFIG_DATA", value = Config })
 end
