@@ -1,6 +1,6 @@
 import {createContext, onMount, useContext} from "solid-js";
 import {createStore, produce} from "solid-js/store";
-import {ArmorIcon, DrinkIcon, FoodIcon, HealthIcon, OxygenIcon, StaminaIcon} from "../Icons";
+import { ArmorIcon, DrinkIcon, FoodIcon, HealthIcon, OxygenIcon, StaminaIcon, StressIcon, DrunkIcon } from "../Icons";
 
 const StateContext = createContext()
 const DispatchContext = createContext()
@@ -42,6 +42,18 @@ const initialState = {
             progressLevel: 100,
             color: "green",
             icon: StaminaIcon
+        },
+        {
+            name: "stressBar",
+            progressLevel: 100,
+            color: "orange",
+            icon: StressIcon // Pastikan Anda memiliki ikon untuk stress
+        },
+        {
+            name: "drunkBar",
+            progressLevel: 100,
+            color: "purple",
+            icon: DrunkIcon // Pastikan Anda memiliki ikon untuk drunk
         }
     ],
     speedo:{
