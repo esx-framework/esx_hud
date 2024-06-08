@@ -79,16 +79,17 @@
       "currentedit": "Derzeitige Bearbeitung:"
     },
     "Status": {
-     "healthbar": "Gesundheitsleiste",
-     "armorbar": "Schutzweste",
-     "drinkbar": "Getränk",
-     "foodbar": "Essen",
-     "oxygenbar": "Sauerstoff",
-     "stressbar": "Stressleiste",
-     "drunkbar": "Betrunkenheitsleiste",
-     "circlewidth": "Statuskreisbreite"
-    },  
-     "Speedo": {
+      "healthbar": "Heilungsleiste",
+      "armorbar": "Weste",
+      "drinkbar": "Trinken",
+      "foodbar": "Essen",
+      "oxygenbar": "Luft",
+      "staminabar": "Ausdauer",
+      "stressbar": "Stressbalken",
+      "drunkbar": "Betrunkenheitsbalken",
+      "circlewidth": "Statuskreisbreite"
+    },
+    "Speedo": {
       "segment-color": "Segmentfarbe",
       "segment-progress-color": "Segmentfortschrittsfarbe",
       "number-color": "Nummerfarbe",
@@ -411,7 +412,7 @@
       "passengerspeedo":"Contakm per passeggero ON/OFF"
     }
   },
-  "fr": {
+    "fr": {
     "General": {
       "status": "Status",
       "speedo": "Compteur de vitesse",
@@ -428,9 +429,9 @@
       "foodbar": "Barre de faim",
       "oxygenbar": "Barre d'oxygène",
       "staminabar": "Barre d'endurance",
-      "stressbar": "Barra dello stress",
-      "drunkbar": "Bar degli ubriachi",
-      "circlewidth": "Larghezza del cerchio di stato"
+      "stressbar": "Barre anti-stress",
+      "drunkbar": "Bar ivre",
+      "circlewidth": "Largeur du cercle d'état"
     },
     "Speedo": {
       "segment-color": "Couleur segment",
