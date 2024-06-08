@@ -1,4 +1,4 @@
-CVConfig = {
+Config = {
     Locale = GetConvar("esx:locale", "en"), -- If you want to change UI language texts you can do it here: web/src/assets/translate.json !!IMPORTANT that this can only be modified with the unbuilt version.
     Colors = {
         Info = {
@@ -50,23 +50,19 @@ CVConfig = {
         Voice = false,
         Money = false,
         Info = false,
-        IndicatorSound = false, --vehicle index sound
-        IndicatorSeatbeltSound = false, --seatbelt sound
+        IndicatorSound = false, -- vehicle index sound
+        IndicatorSeatbeltSound = false, -- seatbelt sound
         VehicleHandlers = false, -- Engine toggle, Indicator lights
         MinimapOnFoot = false,
         Needle = true,
         StatusPercent = true,
         CenterStatuses = true,
+        Stress = false, -- Add this line
+        Drunk = false -- Add this line
     },
     Default = {
         ServerLogo = "https://esx.s3.fr-par.scw.cloud/blanc-800x800.png",
         Kmh = false,
         PassengerSpeedo = false, -- if this true , you can see speedometer if you don't driver
     },
-}
-Config = {}
-Config.Disable = {
-    Status = false,
-    Stress = true, -- Add this line
-    Drunk = true -- Add this line
 }
