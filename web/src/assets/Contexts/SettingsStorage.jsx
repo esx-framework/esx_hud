@@ -31,6 +31,14 @@ const initialState = {
         {
             name: "staminaBar",
             color: "green"
+        },
+        {
+            name: "stressBar",
+            color: "orange"
+        },
+        {
+            name: "drunkBar",
+            color: "purple"
         }
     ],
     infoColors: [
