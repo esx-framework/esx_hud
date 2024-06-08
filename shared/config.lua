@@ -1,4 +1,4 @@
-Config = {
+CVConfig = {
     Locale = GetConvar("esx:locale", "en"), -- If you want to change UI language texts you can do it here: web/src/assets/translate.json !!IMPORTANT that this can only be modified with the unbuilt version.
     Colors = {
         Info = {
