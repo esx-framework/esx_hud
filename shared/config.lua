@@ -11,6 +11,7 @@ Config = {
             armorBar = "blue",
             drinkBar = "lightblue",
             foodBar = "yellow",
+            stressBar = "purple",
         },
         Speedo = {
             ["segment-color"] = "#eee",
