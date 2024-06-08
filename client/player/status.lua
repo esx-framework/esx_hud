@@ -49,4 +49,4 @@ if not Config.Disable.Status then
             Wait(200)
         end
     end)
-end
+   end
