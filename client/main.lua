@@ -34,8 +34,8 @@ local function ToggleHud(state)
     HUD.Data.hudHidden = not state
 end
 
-RegisterNetEvent('esx_hud:HudToggle', ToggleHud)
-exports('HudToggle', ToggleHud)
+RegisterNetEvent("esx_hud:HudToggle", ToggleHud)
+exports("HudToggle", ToggleHud)
 
 -- Handlers
 -- On script start
