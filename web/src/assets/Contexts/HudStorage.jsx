@@ -42,6 +42,18 @@ const initialState = {
             progressLevel: 100,
             color: "green",
             icon: StaminaIcon
+        },
+        {
+            name: "stressBar",
+            progressLevel: 100,
+            color: "orange",
+            icon: StressIcon // Pastikan Anda memiliki ikon untuk stress
+        },
+        {
+            name: "drunkBar",
+            progressLevel: 100,
+            color: "purple",
+            icon: DrunkIcon // Pastikan Anda memiliki ikon untuk drunk
         }
     ],
     speedo:{
