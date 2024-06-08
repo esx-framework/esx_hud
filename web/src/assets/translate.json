@@ -85,7 +85,7 @@
       "foodbar": "Essen",
       "oxygenbar": "Luft",
       "stressbar": "Stressbar",
-      "dronkenbar": "Dronkenbar",
+      "drunkbar": "Dronkenbar",
       "circlewidth": "Status cirkelbreedte"
     },
     "Speedo": {
@@ -292,7 +292,7 @@
       "oxygenbar": "Zuurstof bar",
       "staminabar": "Stamina bar",
       "stressbar": "Stressbar",
-      "dronkenbar": "Dronkenbar",
+      "drunkbar": "Dronkenbar",
       "circlewidth": "Status cirkelbreedte"
     },
     "Speedo": {
