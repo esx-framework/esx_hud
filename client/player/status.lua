@@ -46,7 +46,9 @@ if not Config.Disable.Status then
 
                 values.oxygenBar = IsPedSwimmingUnderWater(PlayerPedId()) and oxygen or 0
                 values.staminaBar = stamina
-                values.drunkBar = drunk  -- Add drunk level to the values table
+                if not Config.Disable.Drunk then
+                    values.drunkBar = drunk  -- Add drunk level to the values table
+                end
 
                 SendNUIMessage({ type = "STATUS_HUD", value = values })
                 Wait(200)
