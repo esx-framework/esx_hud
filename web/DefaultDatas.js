@@ -1,4 +1,4 @@
-import { ArmorIcon, DrinkIcon, FoodIcon, HealthIcon, OxygenIcon, StaminaIcon } from "./src/assets/Icons";
+import { ArmorIcon, DrinkIcon, FoodIcon, HealthIcon, OxygenIcon, StaminaIcon, StressIcon, DrunkIcon } from "./src/assets/Icons";
 
 let defaultConfig = {
     ServerLogo: "",
@@ -29,6 +29,7 @@ const progressColors = {
     foodBar: "yellow",
     oxygenBar: "green",
     staminaBar: "purple",
+    stressBar: "orange"
 };
 
 const vehDefaultData = {
@@ -64,6 +65,7 @@ const progressLevels = {
     foodBar: 80,
     oxygenBar: 100,
     staminaBar: 100,
+    stressBar: 50, // Tambahkan nilai sesuai kebutuhan
 };
 
 const defaultIndicators = {
@@ -127,6 +129,18 @@ const progressDefaultCircles = [
         progressLevel: 100,
         color: "green",
         icon: StaminaIcon,
+    },
+    {
+        name: "stressBar",
+        progressLevel: 100,
+        color: "orange",
+        icon: StressIcon, // Pastikan Anda memiliki ikon untuk stress
+    },
+    {
+        name: "drunkBar",
+        progressLevel: 100,
+        color: "purple",
+        icon: DrunkIcon, // Pastikan Anda memiliki ikon untuk drunk
     },
 ];
 
@@ -255,6 +269,14 @@ const allColors = {
         {
             name: "staminaBar",
             color: "purple",
+        },
+        {
+            name: "stressBar",
+            color: "orange",
+        },
+        {
+            name: "drunkBar",
+            color: "pink",
         },
     ],
     Speedo: [
