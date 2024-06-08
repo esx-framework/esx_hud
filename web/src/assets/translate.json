@@ -16,6 +16,8 @@
       "foodbar": "Food bar",
       "oxygenbar": "Oxygen bar",
       "staminabar": "Stamina bar",
+      "stressbar": "Stress bar",
+      "drunkbar": "Drunk bar",
       "circlewidth": "Status circle width"
     },
     "Speedo": {
@@ -83,7 +85,9 @@
       "foodbar": "Essen",
       "oxygenbar": "Luft",
       "staminabar": "Ausdauer",
-      "circlewidth": "Status Kreisbreite"
+      "stressbar": "Stressbalken",
+      "drunkbar": "Betrunkenheitsbalken",
+      "circlewidth": "Statuskreisbreite"
     },
     "Speedo": {
       "segment-color": "Segmentfarbe",
@@ -150,7 +154,9 @@
       "foodbar": "Étel státusz",
       "oxygenbar": "Oxigén státusz",
       "staminabar": "Stamina státusz",
-      "circlewidth": "Státusz kör vastagsága"
+      "stressbar": "Stress bar",
+      "drunkbar": "Drunk bar",
+      "circlewidth": "Állapot körszélesség"
     },
     "Speedo": {
       "segment-color": "Sebességmérő színe",
@@ -217,7 +223,9 @@
       "foodbar": "Traka hrane",
       "oxygenbar": "Traka vazduha",
       "staminabar": "Traka izdrzljivosti",
-      "circlewidth": "Sirina statusnog kruga"
+      "stressbar": "Traka stresa",
+      "drunkbar": "Bar za pijance",
+      "circlewidth": "Širina kruga statusa"
     },
     "Speedo": {
       "segment-color": "boja segmenta",
@@ -284,7 +292,9 @@
       "foodbar": "Honger bar",
       "oxygenbar": "Zuurstof bar",
       "staminabar": "Stamina bar",
-      "circlewidth": "Breedte status cirkel"
+      "stressbar": "Stressbar",
+      "dronkenbar": "Dronkenbar",
+      "circlewidth": "Status cirkelbreedte"
     },
     "Speedo": {
       "segment-color": "kleursegment",
@@ -350,7 +360,9 @@
       "foodbar": "Barra Fame",
       "oxygenbar": "Barra ossigeno",
       "staminabar": "Barra Stamina",
-      "circlewidth": "Larghezza cerchio status"
+      "stressbar": "Barra dello stress",
+      "drunkbar": "Bar degli ubriachi",
+      "circlewidth": "Larghezza del cerchio di stato"
     },
     "Speedo": {
       "segment-color": "Colore segmento",
@@ -417,7 +429,9 @@
       "foodbar": "Barre de faim",
       "oxygenbar": "Barre d'oxygène",
       "staminabar": "Barre d'endurance",
-      "circlewidth": "Largeur du cercle"
+      "stressbar": "Barre anti-stress",
+      "drunkbar": "Bar ivre",
+      "circlewidth": "Largeur du cercle d'état"
     },
     "Speedo": {
       "segment-color": "Couleur segment",
