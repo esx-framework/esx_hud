@@ -29,6 +29,14 @@ function HUD:Start(xPlayer)
     self:Toggle(true)
 end
 
+local function ToggleHud(state)
+    HUD:Toggle(state)
+    HUD.Data.hudHidden = not state
+end
+
+RegisterNetEvent('esx_hud:HudToggle', ToggleHud)
+exports('HudToggle', ToggleHud)
+
 -- Handlers
 -- On script start
 AddEventHandler("onResourceStart", function(resource)
