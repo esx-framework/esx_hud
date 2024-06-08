@@ -79,16 +79,16 @@
       "currentedit": "Derzeitige Bearbeitung:"
     },
     "Status": {
-      "healthbar": "Heilungsleiste",
-      "armorbar": "Weste",
-      "drinkbar": "Trinken",
-      "foodbar": "Essen",
-      "oxygenbar": "Luft",
-      "stressbar": "Stressbar",
-      "drunkbar": "Dronkenbar",
-      "circlewidth": "Status cirkelbreedte"
-    },
-    "Speedo": {
+     "healthbar": "Gesundheitsleiste",
+     "armorbar": "Schutzweste",
+     "drinkbar": "Getränk",
+     "foodbar": "Essen",
+     "oxygenbar": "Sauerstoff",
+     "stressbar": "Stressleiste",
+     "drunkbar": "Betrunkenheitsleiste",
+     "circlewidth": "Statuskreisbreite"
+    },  
+     "Speedo": {
       "segment-color": "Segmentfarbe",
       "segment-progress-color": "Segmentfortschrittsfarbe",
       "number-color": "Nummerfarbe",
@@ -153,8 +153,8 @@
       "foodbar": "Étel státusz",
       "oxygenbar": "Oxigén státusz",
       "staminabar": "Stamina státusz",
-      "stressbar": "Stress bar",
-      "drunkbar": "Drunk bar",
+      "stressbar": "Stressz státusz",
+      "drunkbar": "Részeg státusz",
       "circlewidth": "Állapot körszélesség"
     },
     "Speedo": {
