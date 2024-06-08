@@ -29,7 +29,8 @@ const progressColors = {
     foodBar: "yellow",
     oxygenBar: "green",
     staminaBar: "purple",
-    stressBar: "orange"
+    stressBar: "orange",
+    drunkBar: "pink"
 };
 
 const vehDefaultData = {
