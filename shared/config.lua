@@ -64,3 +64,9 @@ CVConfig = {
         PassengerSpeedo = false, -- if this true , you can see speedometer if you don't driver
     },
 }
+Config = {}
+Config.Disable = {
+    Status = false,
+    Stress = true, -- Add this line
+    Drunk = true -- Add this line
+}
