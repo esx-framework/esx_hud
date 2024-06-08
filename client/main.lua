@@ -2,9 +2,6 @@ function HUD:Toggle(state)
     SendNUIMessage({ type = "SHOW", value = state })
 end
 
-RegisterNetEvent('esx_hud:HudToggle', HUD:Toggle)
-exports('HudToggle', HUD:Toggle)
-
 function HUD:SetHudColor()
     SendNUIMessage({ type = "SET_CONFIG_DATA", value = Config })
 end
@@ -31,6 +28,14 @@ function HUD:Start(xPlayer)
 
     self:Toggle(true)
 end
+
+local function ToggleHud(state)
+    HUD:Toggle(state)
+    HUD.Data.hudHidden = not state
+end
+
+RegisterNetEvent('esx_hud:HudToggle', ToggleHud)
+exports('HudToggle', ToggleHud)
 
 -- Handlers
 -- On script start
