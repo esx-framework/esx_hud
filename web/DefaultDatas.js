@@ -67,6 +67,7 @@ const progressLevels = {
     oxygenBar: 100,
     staminaBar: 100,
     stressBar: 50, // Tambahkan nilai sesuai kebutuhan
+    drunkBar: 0, // Nilai untuk kondisi pemain tidak mabuk
 };
 
 const defaultIndicators = {
