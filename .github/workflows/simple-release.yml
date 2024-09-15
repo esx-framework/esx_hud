@@ -19,7 +19,10 @@ on:
           type: string
           description: Separate the files or folders that you do not want to see in the release with a comma. 
           required: false
-
+      fxmanifestPath:
+          type: string
+          description: Specify fxmanifest path if fxmanifest is not in the root folder.
+          required: false
 jobs:
   simple-create-release:
     uses: esx-framework/.github/.github/workflows/simple-release.yml@main
@@ -28,3 +31,4 @@ jobs:
       web: ${{ github.event.inputs.web }}
       versionNumber: ${{ github.event.inputs.versionNumber }}
       excludeOptions: ${{ github.event.inputs.excludeOptions }}
+      fxmanifestPath: ${{ github.events.inputs.fxmanifestPath || '**/**/fxmanifest.lua' }}
