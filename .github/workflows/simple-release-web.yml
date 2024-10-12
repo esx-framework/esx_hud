@@ -32,4 +32,4 @@ jobs:
       web: ${{ github.event.inputs.web }}
       versionNumber: ${{ github.event.inputs.versionNumber }}
       excludeOptions: ${{ github.event.inputs.excludeOptions }}
-      fxmanifestPath: ${{ github.events.inputs.fxmanifestPath || '**/**/fxmanifest.lua' }}
+      fxmanifestPath: ${{ github.events.inputs.fxmanifestPath }}
