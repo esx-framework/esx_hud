@@ -23,9 +23,10 @@ on:
           type: string
           description: Specify fxmanifest path if fxmanifest is not in the root folder.
           required: false
+          default: 'fxmanifest.lua'
 jobs:
   simple-create-release:
-    uses: esx-framework/.github/.github/workflows/simple-release.yml@main
+    uses: esx-framework/.github/.github/workflows/simple-release-web.yml@main
     with:
       zipName: ${{ github.event.inputs.zipName }}
       web: ${{ github.event.inputs.web }}
