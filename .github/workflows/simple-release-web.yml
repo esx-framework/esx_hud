@@ -1,4 +1,4 @@
-name: Simple Release
+name: Simple Web Release
 
 on:
   workflow_dispatch:
