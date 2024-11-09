@@ -48,13 +48,16 @@ AddEventHandler("onResourceStart", function(resource)
 end)
 
 -- On player loaded
-AddEventHandler("esx:playerLoaded", function(xPlayer)
-    Wait(1000)
+ESX.SecureNetEvent("esx:playerLoaded", function(xPlayer)
+    while IsScreenFadedOut() do
+        Wait(200)
+    end
+
     HUD:Start(xPlayer)
 end)
 
 -- ForceLog or Logout
-AddEventHandler("esx:onPlayerLogout", function()
+ESX.SecureNetEvent("esx:onPlayerLogout", function()
     Wait(1000)
     HUD:Toggle(false)
 end)
