@@ -131,7 +131,7 @@ AddEventHandler("onResourceStart", function(resource)
 end)
 
 -- On player loaded
-AddEventHandler("esx:playerLoaded", function(xPlayer)
+ESX.SecureNetEvent("esx:playerLoaded", function(xPlayer)
     if not Config.Disable.Weapon then
         HUD:GetWeapons()
     end
