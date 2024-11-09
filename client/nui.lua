@@ -15,7 +15,7 @@ end)
 
 RegisterNUICallback("minimapSettingChanged", function(state, cb)
     Config.Disable.MinimapOnFoot = state.changed
-    if IsPedOnFoot(PlayerPedId()) ~= 1 then
+    if IsPedOnFoot(ESX.PlayerData.ped) ~= 1 then
         return cb("ok")
     end
     DisplayRadar(not state.changed)
