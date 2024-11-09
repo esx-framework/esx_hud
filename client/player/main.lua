@@ -1,6 +1,5 @@
 local bool, ammoInClip = false, 0
 local WeaponList = {}
-
 function HUD:GetJobLabel()
     if not ESX.PlayerData.job then
         return
@@ -13,7 +12,7 @@ function HUD:GetJobLabel()
 end
 
 function HUD:GetLocation()
-    local PPos = GetEntityCoords(PlayerPedId())
+    local PPos = GetEntityCoords(ESX.PlayerData.ped)
     local streetHash = GetStreetNameAtCoord(PPos.x, PPos.y, PPos.z)
     local streetName = GetStreetNameFromHashKey(streetHash)
     return streetName
@@ -44,19 +43,19 @@ function HUD:SlowThick()
             Wait(200)
         end
         while ESX.PlayerLoaded do
-            self.Data.Position = GetEntityCoords(PlayerPedId())
+            self.Data.Position = GetEntityCoords(ESX.PlayerData.ped)
 
             if not Config.Disable.Position then
                 self.Data.Location = self:GetLocation()
             end
 
             if not Config.Disable.Weapon then
-                self.Data.Weapon.Active, self.Data.Weapon.CurrentWeapon = GetCurrentPedWeapon(PlayerPedId(), false)
+                self.Data.Weapon.Active, self.Data.Weapon.CurrentWeapon = GetCurrentPedWeapon(ESX.PlayerData.ped, false)
                 if self.Data.Weapon.CurrentWeapon == 0 then
                     self.Data.Weapon.Active = false
                 end
                 if self.Data.Weapon.Active and WeaponList[self.Data.Weapon.CurrentWeapon] then
-                    self.Data.Weapon.MaxAmmo = (GetAmmoInPedWeapon(PlayerPedId(), self.Data.Weapon.CurrentWeapon) - ammoInClip)
+                    self.Data.Weapon.MaxAmmo = (GetAmmoInPedWeapon(ESX.PlayerData.ped, self.Data.Weapon.CurrentWeapon) - ammoInClip)
                     self.Data.Weapon.Name = WeaponList[self.Data.Weapon.CurrentWeapon].label and WeaponList[self.Data.Weapon.CurrentWeapon].label or false
                     self.Data.Weapon.isWeaponMelee = not WeaponList[self.Data.Weapon.CurrentWeapon].ammo
                     self.Data.Weapon.Image = string.gsub(WeaponList[self.Data.Weapon.CurrentWeapon].name, "WEAPON_", "")
@@ -79,21 +78,21 @@ function HUD:FastThick()
         while not ESX.PlayerLoaded do
             Wait(200)
         end
-        local plyId = GetPlayerServerId(PlayerId())
+
         local srvLogo = Config.Default.ServerLogo
         while ESX.PlayerLoaded do
             if not Config.Disable.Voice then
-                self.Data.isTalking = NetworkIsPlayerTalking(PlayerId())
+                self.Data.isTalking = NetworkIsPlayerTalking(ESX.playerId)
             end
 
             if self.Data.Weapon.Active then
-                bool, ammoInClip = GetAmmoInClip(PlayerPedId(), self.Data.Weapon.CurrentWeapon)
+                bool, ammoInClip = GetAmmoInClip(ESX.PlayerData.ped, self.Data.Weapon.CurrentWeapon)
                 self.Data.Weapon.CurrentAmmo = ammoInClip
             end
 
             local values = {
-                playerId = plyId,
-                onlinePlayers = GlobalState["OnlinePlayers"],
+                playerId = ESX.serverId,
+                onlinePlayers = GlobalState["playerCount"],
                 serverLogo = srvLogo,
                 moneys = { bank = self.Data.Money.bank or 0, money = self.Data.Money.cash or 0 },
                 weaponData = {
@@ -104,7 +103,7 @@ function HUD:FastThick()
                     currentAmmo = self.Data.Weapon.CurrentAmmo or 0,
                     maxAmmo = self.Data.Weapon.MaxAmmo or 0,
                 },
-                streetName = self.Data.Location or "Noname street",
+                streetName = self.Data.Location or "Unknown street",
                 voice = {
                     mic = self.Data.isTalking or false,
                     radio = self.Data.isTalkingOnRadio,
@@ -114,7 +113,7 @@ function HUD:FastThick()
             }
 
             SendNUIMessage({ type = "HUD_DATA", value = values })
-            Wait(200)
+            Wait(500)
         end
     end)
 end
