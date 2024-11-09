@@ -17,10 +17,6 @@ function HUD:InfoHandle(msg, color)
     print(("[^9INFO^7] ^3esx_hud^7: ^" .. color .. "%s^7"):format(msg))
 end
 
-function HUD:UpdatePlayerCount()
-    GlobalState["OnlinePlayers"] = HUD.Data.OnlinePlayers
-end
-
 VERSION = {
     Check = function(err, response, headers)
         --Credit: OX_lib version checker by Linden
@@ -85,19 +81,6 @@ RegisterNetEvent("esx_hud:ErrorHandle", function(msg)
     HUD:ErrorHandle(msg)
 end)
 
-AddEventHandler("playerJoining", function(playerId, reason)
-    HUD.Data.OnlinePlayers += 1
-    HUD:UpdatePlayerCount()
-end)
-
-AddEventHandler("playerDropped", function()
-    HUD.Data.OnlinePlayers += -1
-    if HUD.Data.OnlinePlayers < 0 then
-        HUD.Data.OnlinePlayers = 0
-    end
-    HUD:UpdatePlayerCount()
-end)
-
 AddEventHandler("onResourceStart", function(resourceName)
     local currentName = GetCurrentResourceName()
     if resourceName ~= currentName then
@@ -106,8 +89,6 @@ AddEventHandler("onResourceStart", function(resourceName)
     local built = LoadResourceFile(currentName, "./web/dist/index.html")
 
     Wait(100)
-    HUD.Data.OnlinePlayers = #GetPlayers()
-    HUD:UpdatePlayerCount()
 
     --Run version checker
     VERSION:RunVersionChecker()
