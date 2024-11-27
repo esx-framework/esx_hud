@@ -3,7 +3,7 @@ game("gta5")
 lua54("yes")
 
 description("The default HUD resource for ESX-Legacy.")
-version('1.9.0')
+version('1.10.1')
 
 shared_scripts({
     "@es_extended/imports.lua",
