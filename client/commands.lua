@@ -73,6 +73,40 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
         end
     end)
 
+    local seatsToWindow ={
+        [0] = 0,
+        [1] = 1,
+        [2] = 2,
+        [3] = 3,
+        [4] = 3,
+    }
+
+    ESX.RegisterInput("esx_hud:windowRoll", Translate("windowRoll"), "keyboard", "Down", function()
+        if not HUD.Data.Vehicle then
+            return
+        end
+        if HUD.Data.VehicleType == "AIR" then
+            return
+        end
+
+        local maxSeats = GetVehicleMaxNumberOfPassengers(HUD.Data.Vehicle)
+        if maxSeats < 4  then
+            return
+        end
+
+        local window = seatsToWindow[HUD.Data.Seat - 1]
+
+        if not window then
+            return
+        end
+
+        if IsVehicleWindowIntact(HUD.Data.Vehicle, window) then
+            RollDownWindow(HUD.Data.Vehicle, window)
+        else
+            RollUpWindow(HUD.Data.Vehicle, window)
+        end
+    end)
+
     ESX.RegisterInput("esx_hud:toggleEngine", Translate("toggleEngine"), "keyboard", "N", function()
         if not HUD.Data.Vehicle then
             return
