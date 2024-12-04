@@ -81,7 +81,7 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
         [4] = 3,
     }
 
-    ESX.RegisterInput("esx_hud:windowToggle", Translate("windowToggle"), "keyboard", "Down", function()
+    ESX.RegisterInput("esx_hud:windowRoll", Translate("windowRoll"), "keyboard", "Down", function()
         if not HUD.Data.Vehicle then
             return
         end
