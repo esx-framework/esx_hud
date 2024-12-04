@@ -78,6 +78,7 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
         [1] = 1,
         [2] = 2,
         [3] = 3,
+        [4] = 3,
     }
 
     ESX.RegisterInput("esx_hud:windowToggle", Translate("windowToggle"), "keyboard", "Down", function()
@@ -88,7 +89,13 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
             return
         end
 
-        local window = seatsToWindow[HUD.Data.Seat]
+        local maxSeats = GetVehicleMaxNumberOfPassengers(HUD.Data.Vehicle)
+        if maxSeats < 4  then
+            return
+        end
+
+        local window = seatsToWindow[HUD.Data.Seat - 1]
+
         if not window then
             return
         end

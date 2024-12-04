@@ -131,7 +131,9 @@ if not Config.Disable.Vehicle then
         end
 
         HUD.Data.Driver = currentSeat == -1 or false
+        HUD.Data.Seat = currentSeat
         HUD.Data.Vehicle = currentVehicle
+
         vehicleType = "LAND"
 
         if vehicleClass == 15 or vehicleClass == 16 then
@@ -155,6 +157,7 @@ if not Config.Disable.Vehicle then
         p = promise:new()
         HUD.Data.Driver = false
         HUD.Data.Vehicle = nil
+        HUD.Data.Seat = nil
         vehicleType = nil
 
         values = {
