@@ -89,11 +89,6 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
             return
         end
 
-        local maxSeats = GetVehicleMaxNumberOfPassengers(HUD.Data.Vehicle)
-        if maxSeats > 4  then
-            return
-        end
-
         local seat = ESX.PlayerData.seat
         local window = seatsToWindow[seat - 1]
 
