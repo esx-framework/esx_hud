@@ -90,7 +90,7 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
         end
 
         local maxSeats = GetVehicleMaxNumberOfPassengers(HUD.Data.Vehicle)
-        if maxSeats < 4  then
+        if maxSeats > 4  then
             return
         end
 
