@@ -94,7 +94,8 @@ if not Config.Disable.VehicleHandlers and not Config.Disable.Vehicle then
             return
         end
 
-        local window = seatsToWindow[HUD.Data.Seat - 1]
+        local seat = ESX.PlayerData.seat
+        local window = seatsToWindow[seat - 1]
 
         if not window then
             return
