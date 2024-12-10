@@ -132,6 +132,7 @@ if not Config.Disable.Vehicle then
 
         HUD.Data.Driver = currentSeat == -1 or false
         HUD.Data.Vehicle = currentVehicle
+
         vehicleType = "LAND"
 
         if vehicleClass == 15 or vehicleClass == 16 then
